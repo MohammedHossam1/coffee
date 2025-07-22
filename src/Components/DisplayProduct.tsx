@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { IProduct } from "../interfaces";
+import CategoriesTabs from "./CategoriesTabs";
 
 const gradients = [
   "from-red-400 via-pink-500 to-purple-500",
@@ -49,15 +50,26 @@ const DisplayProduct = ({ item }: { item: IProduct }) => {
       </Swiper>
 
       {/* معلومات المنتج */}
-      <div className="text-center mt-3">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-main">{item.title}</h2>
-        <p className="text-lg mt-1">${item.price}</p>
-      </div>
+        <div className="">
+          <p className="text-sm leading-relaxed">{item.desc}</p>
 
-      {/* وصف المنتج */}
-      <div className=" text-gray-800  rounded-2xl p-4 ">
-        <h3 className="text-lg font-semibold mb-2">Description</h3>
-        <p className="text-sm leading-relaxed">{item.desc}</p>
+        </div>
+        <p className="text-lg mt-1">${item.price}</p>
+
+        <div className="flex items-center justify-center gap-2   my-3">
+
+          <div className="p-2  bg-main text-white border rounded-sm  ">
+            SM
+          </div>
+          <div className="p-2  bg-white border rounded-sm  ">
+            LG
+          </div>
+          <div className="p-2  bg-white border rounded-sm  ">
+            XL
+          </div>
+        </div>
       </div>
     </div>
   );

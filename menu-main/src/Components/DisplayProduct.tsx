@@ -51,6 +51,17 @@ const DisplayProduct = ({ item }: { item: IProduct }) => {
       {/* معلومات المنتج */}
       <div className="text-center mt-3">
         <h2 className="text-2xl font-bold text-main">{item.title}</h2>
+        <div className="flex items-center justify-center gap-2">
+          <div className="p-1 bg-red-300 border rounded-2xl">
+            SM
+          </div>
+          <div className="p-1 bg-red-300 border rounded-2xl">
+            LG
+          </div>
+          <div className="p-1 bg-red-300 border rounded-2xl">
+            XL
+          </div>
+        </div>
         <p className="text-lg mt-1">${item.price}</p>
       </div>
 

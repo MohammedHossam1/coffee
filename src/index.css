@@ -39,7 +39,7 @@ body {
 
 /* الصورة النشطة تكون بالحجم الطبيعي وبدون رفع */
 .swiper-slide-active {
-  transform: scale(1.5)  !important;
+  transform: scale(1.2)  !important;
   opacity: 1;
   filter: none;
   z-index: 10;
