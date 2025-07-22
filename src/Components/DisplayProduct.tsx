@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { IProduct } from "../interfaces";
-import CategoriesTabs from "./CategoriesTabs";
 
 const gradients = [
   "from-red-400 via-pink-500 to-purple-500",
