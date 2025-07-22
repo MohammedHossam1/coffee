@@ -33,13 +33,13 @@ body {
 /* كل الصور تصغير ورفع شوية */
 .swiper-slide {
   transition: transform 0.3s ease;
-  transform: scale(0.7)  !important;
+  transform: scale(0.6)  !important;
   filter: grayscale(20%);
 }
 
 /* الصورة النشطة تكون بالحجم الطبيعي وبدون رفع */
 .swiper-slide-active {
-  transform: scale(1.2)  !important;
+  transform: scale(1)  !important;
   opacity: 1;
   filter: none;
   z-index: 10;

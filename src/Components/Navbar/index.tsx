@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <header className=" text-white pt-2  z-50 relative">
       <div className="custom-container flex items-center justify-between">
-        <h1 className="text-xl font-bold">Coffee</h1>
+        <h1 className="text-xl font-bold"></h1>
 
         {/* Desktop Links */}
         <nav className="hidden md:flex items-center gap-6">

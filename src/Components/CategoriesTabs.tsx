@@ -5,7 +5,7 @@ import {
     FaGlassWhiskey,
   } from "react-icons/fa";
   import { useState, useRef, useEffect } from "react";
-  
+  import vector from "/src/assets/tbg2.png";
   const categories = [
     { id: 1, name: "Snacks", icon: <FaPizzaSlice size={20} /> },
     { id: 2, name: "Meal", icon: <FaUtensils size={20} /> },
@@ -40,7 +40,7 @@ import {
             }}
           >
             <img
-              src="/src/assets/tbg2.png"
+              src={vector}
               alt="curve"
               className="w-full h-full"
             />
