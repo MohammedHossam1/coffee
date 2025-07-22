@@ -1,7 +1,11 @@
 {
   "files": [],
+  "compilerOptions": {
+    "types": ["swiper"]
+  },
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ]
+  
 }

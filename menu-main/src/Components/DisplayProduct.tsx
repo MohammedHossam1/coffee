@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import 'swiper/swiper.min.css';
+import 'swiper/modules/navigation/navigation.min.css';
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { IProduct } from "../interfaces";
 

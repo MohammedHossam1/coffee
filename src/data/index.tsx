@@ -102,6 +102,94 @@ export const productsData: IProduct[] = [
     },
 ];
 
+export const productsData2: IProduct[] = [
+  {
+    id: 6,
+    title: "Turkish Coffee",
+    images: [
+      "/src/assets/11.png",
+      "/src/assets/2.png",
+      "/src/assets/3.png",
+      "/src/assets/4.png",
+      "/src/assets/7.png",
+    ],
+    price: 35,
+    category: "Turkish",
+    desc: "A rich and bold espresso, perfectly concentrated and served in a small cup for an intense coffee experience.",
+  },
+  {
+    id: 6,
+    title: "Turkish Coffee",
+    images: [
+      "/src/assets/22.png",
+      "/src/assets/2.png",
+      "/src/assets/3.png",
+      "/src/assets/4.png",
+      "/src/assets/7.png",
+    ],
+    price: 35,
+    category: "Turkish",
+    desc: "A rich and bold espresso, perfectly concentrated and served in a small cup for an intense coffee experience.",
+  },
+  {
+    id: 6,
+    title: "Turkish Coffee",
+    images: [
+      "/src/assets/33.png",
+      "/src/assets/2.png",
+      "/src/assets/3.png",
+      "/src/assets/4.png",
+      "/src/assets/7.png",
+    ],
+    price: 35,
+    category: "Turkish",
+    desc: "A rich and bold espresso, perfectly concentrated and served in a small cup for an intense coffee experience.",
+  },
+  {
+    id: 6,
+    title: "Turkish Coffee",
+    images: [
+      "/src/assets/11.png",
+      "/src/assets/2.png",
+      "/src/assets/3.png",
+      "/src/assets/4.png",
+      "/src/assets/7.png",
+    ],
+    price: 35,
+    category: "Turkish",
+    desc: "A rich and bold espresso, perfectly concentrated and served in a small cup for an intense coffee experience.",
+  },
+  {
+    id: 6,
+    title: "Turkish Coffee",
+    images: [
+      "/src/assets/22.png",
+      "/src/assets/2.png",
+      "/src/assets/3.png",
+      "/src/assets/4.png",
+      "/src/assets/7.png",
+    ],
+    price: 35,
+    category: "Turkish",
+    desc: "A rich and bold espresso, perfectly concentrated and served in a small cup for an intense coffee experience.",
+  },
+  {
+    id: 6,
+    title: "Turkish Coffee",
+    images: [
+      "/src/assets/33.png",
+      "/src/assets/2.png",
+      "/src/assets/3.png",
+      "/src/assets/4.png",
+      "/src/assets/7.png",
+    ],
+    price: 35,
+    category: "Turkish",
+    desc: "A rich and bold espresso, perfectly concentrated and served in a small cup for an intense coffee experience.",
+  },
+  
+ 
+];
 
 export const categoriesData = [
   { id: 1, name: "برجر" },
@@ -116,4 +204,10 @@ export const categoriesData = [
   { id: 10, name: "سوشي" },
   { id: 11, name: "حلويات" },
   { id: 12, name: "فراخ" },
+];
+// data/categories.ts
+export const categories = [
+  { id: 1, name: "قهوة", image: "/src/assets/2.png" },
+  { id: 2, name: "شاي", image: "/src/assets/3.png" },
+  { id: 3, name: "عصير", image: "/src/assets/4.png" },
 ];

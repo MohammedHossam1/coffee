@@ -19,9 +19,9 @@ const DisplayProduct = ({ item }: { item: IProduct }) => {
   const gradientClass = gradients[activeIndex % gradients.length];
 
   return (
-    <div className="max-w-md mx-auto ">
+    <div className="max-w-md mx-auto !overflow-x-hidden">
       <div
-        className={`bg-gradient-to-r ${gradientClass} rounded-b-full absolute top-0 inset-x-0 h-[200px] scale-125 transition-all duration-500`}
+        className={`bg-gradient-to-r ${gradientClass} rounded-b-full absolute top-0 inset-x-0 h-[200px] scale-12s5 !overflow-x-hidden transition-all duration-500`}
       />
 
       {/* السلايدر */}
@@ -42,7 +42,7 @@ const DisplayProduct = ({ item }: { item: IProduct }) => {
             <img
               src={img}
               alt={`Product ${i}`}
-              className="w-full h-64 object-contain rounded-2xl"
+              className="w-full h-64 !object-contain rounded-2xl"
             />
           </SwiperSlide>
         ))}
