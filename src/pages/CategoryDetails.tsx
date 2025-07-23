@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { CiGrid2H, CiGrid2V } from "react-icons/ci";
+import { FaArrowLeft } from "react-icons/fa";
+import CategoriesTabs from "../Components/CategoriesTabs";
 import ColProduct from "../Components/ColProduct";
 import DisplayProduct from "../Components/DisplayProduct";
 import ProductCard from "../Components/Product";
 import { productsData, productsData2 } from "../data";
 import type { IProduct } from "../interfaces";
-import CategoriesTabs from "../Components/CategoriesTabs";
 
 
 const CategoryDetails = () => {
@@ -14,11 +15,13 @@ const CategoryDetails = () => {
 
   return (
     <div className="pb-3">
-
+      <div className="absolute top-4 left-4 cursor-pointer text-main z-100" onClick={() => window.history.back()}>
+       <FaArrowLeft/>
+      </div>
       {/* المنتج المختار */}
       <DisplayProduct item={selectedProduct} />
       <div className="bg-gradient-to-r rounded-t-2xl from-orange-400 to-orange-300 ">
-      <CategoriesTabs />
+        <CategoriesTabs />
 
 
         {/* Tabs */}
