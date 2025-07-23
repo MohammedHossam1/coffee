@@ -15,6 +15,7 @@ const gradients = [
 const DisplayProduct = ({ item }: { item: IProduct }) => {
   const images = item.images;
   const [activeIndex, setActiveIndex] = useState(0);
+  const [price, setPrice] = useState(20);
 
   const gradientClass = gradients[activeIndex % gradients.length];
 
@@ -55,17 +56,18 @@ const DisplayProduct = ({ item }: { item: IProduct }) => {
           <p className="text-sm leading-relaxed">{item.desc}</p>
 
         </div>
-        <p className="text-lg mt-1">${item.price}</p>
+        <p className="text-lg mt-1">${price}</p>
 
         <div className="flex items-center justify-center gap-2   my-3">
 
-          <div className="p-2  bg-main text-white border rounded-sm  ">
+          <div onClick={() => setPrice(20)} className={`p-2  ${price === 20 ? "bg-main text-white" :
+             "bg-white text-main border-gray-300"}  border rounded-sm  `}>
             SM
           </div>
-          <div className="p-2  bg-white border rounded-sm  ">
+          <div onClick={() => setPrice(40)} className={`p-2  ${price === 40 ? "bg-main text-white" : "bg-white text-main border-gray-300"}  border rounded-sm  `}>
             LG
           </div>
-          <div className="p-2  bg-white border rounded-sm  ">
+          <div onClick={() => setPrice(60)} className={`p-2  ${price === 60 ? "bg-main text-white" : "bg-white text-main border-gray-300"}  border rounded-sm  `}>
             XL
           </div>
         </div>
