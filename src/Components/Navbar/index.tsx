@@ -12,7 +12,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className=" text-white pt-2  z-50 relative">
+    <header className=" text-white py-2 pt-4  z-50 relative">
       <div className="custom-container flex items-center justify-between">
         <h1 className="text-xl font-bold"></h1>
 
@@ -31,11 +31,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden text-2xl z-[100] ${isOpen ? "fixed top-5 end-3" : ""}`}
+          className={`md:hidden text-2xl  z-[100] ${isOpen ? "fixed top-5 end-3" : ""}`}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <FiX className="text-main"/> : <FiMenu />}
+          {isOpen ? <FiX className="text-main"/> : <FiMenu className="text-main"/>}
         </button>
       </div>
 

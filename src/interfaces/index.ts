@@ -6,3 +6,9 @@ export interface IProduct {
     category: string
     desc: string
 }
+export interface ICategory {
+    id: number;
+    image: string;
+    name: string;
+    price: number;
+}

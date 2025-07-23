@@ -1,6 +1,11 @@
-import type { IProduct } from "../interfaces";
+import type { ICategory, IProduct } from "../interfaces";
 
 // استيراد الصور
+import img111 from "../assets/homeSlider/1.jpg"
+import img222 from "../assets/homeSlider/2.jpg"
+import img333 from "../assets/homeSlider/3.jpg"
+import img444 from "../assets/homeSlider/4.jpg"
+import img555 from "../assets/homeSlider/5.jpg"
 import img1 from "../assets/1.png";
 import img2 from "../assets/2.png";
 import img3 from "../assets/3.png";
@@ -138,8 +143,19 @@ export const categoriesData = [
 ];
 
 // كاتيجوري بالك صور
-export const categories = [
-  { id: 1, name: "قهوة", image: img2 },
-  { id: 2, name: "شاي", image: img3 },
-  { id: 3, name: "عصير", image: img4 },
+export const categories: ICategory[] = [
+  { id: 1, price: 20, name: "Coffee", image: img2 },
+  { id: 2, price: 20, name: "Tea", image: img3 },
+  { id: 3, price: 20, name: "Juice", image: img4 },
+  { id: 4, price: 20, name: "Juice", image: img1 },
+  { id: 5, price: 20, name: "Juice", image: img2 },
+  { id: 6, price: 20, name: "Juice", image: img3 },
+];
+export const categories2: ICategory[] = [
+  { id: 1, price: 20, name: "Coffee", image: img111 },
+  { id: 2, price: 20, name: "Tea", image: img333 },
+  { id: 3, price: 20, name: "Juice", image: img222 },
+  { id: 4, price: 20, name: "Juice", image: img333 },
+  { id: 5, price: 20, name: "Juice", image: img444 },
+  { id: 6, price: 20, name: "Juice", image: img555 },
 ];

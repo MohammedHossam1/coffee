@@ -31,7 +31,6 @@ const CategoriesTabs = () => {
   return (
     <div className="relative pt-5 rounded-t-3xl">
       <div className="flex gap-2 w-[96%] relative z-10 px-2">
-        {/* ✅ الخلفية المتحركة */}
         <div
           className="absolute -bottom-1 h-[70px] w-200 z-0 transition-all duration-300"
           style={{
