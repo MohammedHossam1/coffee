@@ -3,14 +3,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { categories2 } from "../data";
 
-const categories2 = [
-  { name: "صنف 1", image: "/src/assets/slide-main.png" },
-  { name: "صنف 2", image: "/src/assets/slide-main.png" },
-  { name: "صنف 3", image: "/src/assets/slide-main.png" },
-  { name: "صنف 4", image: "/src/assets/slide-main.png" },
-  { name: "صنف 5", image: "/src/assets/slide-main.png" },
-];
 
 
 

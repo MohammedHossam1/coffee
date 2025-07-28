@@ -1,19 +1,16 @@
 import type { ICategory, IProduct } from "../interfaces";
 
 // استيراد الصور
-import img111 from "../assets/homeSlider/1.jpg"
-import img222 from "../assets/homeSlider/2.jpg"
-import img333 from "../assets/homeSlider/3.jpg"
-import img444 from "../assets/homeSlider/4.jpg"
-import img555 from "../assets/homeSlider/5.jpg"
+import img111 from "/src/assets/slide-main.png"
+import img222 from "/src/assets/slide-main.png"
+import img333 from "/src/assets/slide-main.png"
+import img444 from "/src/assets/slide-main.png"
+import img555 from "/src/assets/slide-main.png"
 import img1 from "../assets/1.png";
 import img2 from "../assets/2.png";
 import img3 from "../assets/3.png";
 import img4 from "../assets/4.png";
 import img7 from "../assets/7.png";
-import img11 from "../assets/11.png";
-import img22 from "../assets/22.png";
-import img33 from "../assets/33.png";
 
 // بيانات المنتجات
 export const productsData: IProduct[] = [
@@ -75,57 +72,6 @@ export const productsData: IProduct[] = [
   },
 ];
 
-export const productsData2: IProduct[] = [
-  {
-    id: 8,
-    title: "قهوة تركية",
-    images: [img11, img2, img3, img4, img7],
-    price: 16.99,
-    category: "تركي",
-    desc: "اكتشف متعة القهوة كما لم تعشها من قبل. نكهات غنية، روائح تأسر الحواس، وتجربة تُسحر بها من أول فنجان... فهل أنت جاهز؟",
-  },
-  {
-    id: 9,
-    title: "قهوة تركية",
-    images: [img22, img2, img3, img4, img7],
-    price: 16.99,
-    category: "تركي",
-    desc: "اكتشف متعة القهوة كما لم تعشها من قبل. نكهات غنية، روائح تأسر الحواس، وتجربة تُسحر بها من أول فنجان... فهل أنت جاهز؟",
-  },
-  {
-    id: 10,
-    title: "قهوة تركية",
-    images: [img33, img2, img3, img4, img7],
-    price: 16.99,
-    category: "تركي",
-    desc: "اكتشف متعة القهوة كما لم تعشها من قبل. نكهات غنية، روائح تأسر الحواس، وتجربة تُسحر بها من أول فنجان... فهل أنت جاهز؟",
-  },
-  {
-    id: 11,
-    title: "قهوة تركية",
-    images: [img11, img2, img3, img4, img7],
-    price: 16.99,
-    category: "تركي",
-    desc: "اكتشف متعة القهوة كما لم تعشها من قبل. نكهات غنية، روائح تأسر الحواس، وتجربة تُسحر بها من أول فنجان... فهل أنت جاهز؟",
-  },
-  {
-    id: 12,
-    title: "قهوة تركية",
-    images: [img22, img2, img3, img4, img7],
-    price: 16.99,
-    category: "تركي",
-    desc: "اكتشف متعة القهوة كما لم تعشها من قبل. نكهات غنية، روائح تأسر الحواس، وتجربة تُسحر بها من أول فنجان... فهل أنت جاهز؟",
-  },
-  {
-    id: 13,
-    title: "قهوة تركية",
-    images: [img33, img2, img3, img4, img7],
-    price: 16.99,
-    category: "تركي",
-    desc: "اكتشف متعة القهوة كما لم تعشها من قبل. نكهات غنية، روائح تأسر الحواس، وتجربة تُسحر بها من أول فنجان... فهل أنت جاهز؟",
-  },
-];
-
 // كاتيجوري متعددة
 export const categoriesData = [
   { id: 1, name: "برجر" },
@@ -144,18 +90,19 @@ export const categoriesData = [
 
 // كاتيجوري بالك صور
 export const categories: ICategory[] = [
-  { id: 1, price: 16.99, name: "قهوه", text:"Mo",image: img2 },
-  { id: 2, price: 16.99, name: "شاي", text:"Mo",image: img3 },
-  { id: 3, price: 16.99, name: "عصير", text:"Mo",image: img4 },
-  { id: 4, price: 16.99, name: "عصير", text:"Mo",image: img1 },
-  { id: 5, price: 16.99, name: "عصير", text:"Mo",image: img2 },
-  { id: 6, price: 16.99, name: "عصير", text:"Mo",image: img3 },
+  { id: 1, price: 16.99, name: "قهوه", text: "Mo", image: img2 },
+  { id: 2, price: 16.99, name: "شاي", text: "Mo", image: img3 },
+  { id: 3, price: 16.99, name: "عصير", text: "Mo", image: img4 },
+  { id: 4, price: 16.99, name: "عصير", text: "Mo", image: img1 },
+  { id: 5, price: 16.99, name: "عصير", text: "Mo", image: img2 },
+  { id: 6, price: 16.99, name: "عصير", text: "Mo", image: img3 },
 ];
 export const categories2: ICategory[] = [
-  { id: 1, price: 16.99, name: "قهوه", text:"Mo",image: img111 },
-  { id: 2, price: 16.99, name: "شاي", text:"Mo",image: img333 },
-  { id: 3, price: 16.99, name: "عصير", text:"Mo",image: img222 },
-  { id: 4, price: 16.99, name: "عصير", text:"Mo",image: img333 },
-  { id: 5, price: 16.99, name: "عصير", text:"Mo",image: img444 },
-  { id: 6, price: 16.99, name: "عصير", text:"Mo",image: img555 },
+  { id: 1, price: 16.99, name: "قهوه", text: "Mo", image: img111 },
+  { id: 2, price: 16.99, name: "شاي", text: "Mo", image: img333 },
+  { id: 3, price: 16.99, name: "عصير", text: "Mo", image: img222 },
+  { id: 4, price: 16.99, name: "عصير", text: "Mo", image: img333 },
+  { id: 5, price: 16.99, name: "عصير", text: "Mo", image: img444 },
+  { id: 6, price: 16.99, name: "عصير", text: "Mo", image: img555 },
+
 ];

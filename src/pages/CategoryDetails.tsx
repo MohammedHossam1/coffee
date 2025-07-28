@@ -19,7 +19,7 @@ const CategoryDetails = () => {
           <img
             src={selectedProduct.images[0]}
             alt={`Product `}
-            className="w-[400px] h-64 !object-contain rounded-2xl"
+            className="w-full h-64 !object-contain rounded-2xl"
           />
           <div className="w-44 h-44 bg-[#f7fbe5] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
         </div>
