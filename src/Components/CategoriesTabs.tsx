@@ -1,16 +1,13 @@
-import {
-  FaPizzaSlice,
-  FaUtensils,
-  FaLeaf,
-  FaGlassWhiskey,
-} from "react-icons/fa";
-import { useState, useRef, useEffect } from "react";
-import vector from "/src/assets/tbg2.png";
+import { useEffect, useRef, useState } from "react";
+import  boza  from "../assets/cat-tabs/boza.svg";
+import  Capa  from "../assets/cat-tabs/Capa.svg";
+import  cafe  from "../assets/cat-tabs/cafe.svg";
+import  drinks  from "../assets/cat-tabs/drinks.svg";
 const categories = [
-  { id: 1, name: "Snacks", icon: <FaPizzaSlice size={20} /> },
-  { id: 2, name: "Meal", icon: <FaUtensils size={20} /> },
-  { id: 3, name: "Vegan", icon: <FaLeaf size={20} /> },
-  { id: 5, name: "Drinks", icon: <FaGlassWhiskey size={20} /> },
+  { id: 1, name: "بـوظة", src: boza },
+  { id: 2, name: "عصـــائر", src: Capa },
+  { id: 3, name: "الكافيهات", src: cafe },
+  { id: 5, name: "المشروبات.", src:drinks },
 ];
 
 const CategoriesTabs = () => {
@@ -29,9 +26,9 @@ const CategoriesTabs = () => {
   }, [selected]);
 
   return (
-    <div className="relative pt-5 rounded-t-3xl">
-      <div className="flex gap-2 w-[96%] relative z-10 px-2">
-        <div
+    <div className="relative py-3 custom-container">
+      <div className="flex gap-2 w-full relative z-10 ">
+        {/* <div
           className="absolute -bottom-1 h-[70px] w-200 z-0 transition-all duration-300"
           style={{
             left: offset,
@@ -43,12 +40,12 @@ const CategoriesTabs = () => {
             alt="curve"
             className="w-full h-full"
           />
-        </div>
+        </div> */}
 
         {categories.map((cat, index) => (
           <div
             key={cat.id}
-            className="relative w-full z-10"
+            className="relative w-full z-10 "
             ref={(el) => {
               tabRefs.current[index] = el;
             }}
@@ -56,12 +53,14 @@ const CategoriesTabs = () => {
           >
             <button
               onClick={() => setSelected(cat.id)}
-              className={`relative flex flex-col w-full py-2 items-center justify-center  translate-x-2  rounded-2xl transition-all
-                  ${selected === cat.id ? "text-orange-500" : "text-white"}
+              className={`relative flex flex-col w-full py-3 items-center justify-center gap-2     rounded-3xl transition-all
+                  ${selected === cat.id ? "text-black bg-white " : ""}
                 `}
             >
-              <div className="mb-1">{cat.icon}</div>
-              <span className="text-xs font-semibold">{cat.name}</span>
+              <div className="mb-1">
+                <img src={cat.src} alt={cat.name} className="w-8 h-8" />
+              </div>
+              <span className="text-[10px] font-bold">{cat.name}</span>
             </button>
           </div>
         ))}

@@ -1,21 +1,18 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import DesktopBlocker from "../Components/DesktopBlocker";
+import DesktopBlocker from "../Components/shared/DesktopBlocker";
 
 const MainLayout = () => {
 
   return (
-    <div className="min-h-screen flex flex-col gap-4">
+    <div dir="rtl" className="min-h-screen flex flex-col gap-4">
       <div className="">
         <DesktopBlocker />
         <Navbar />
-        <main className="flex-grow !overflow-x-hidden">
+        <main className="flex-grow !overflow-x-hidden min-h-screen">
           <Outlet />
         </main>
-
-        <footer className="bg-white text-center py-4 border-t text-sm text-gray-500">
-          &copy; 2025 My Menu App
-        </footer>
+       
       </div>
     </div>
   );

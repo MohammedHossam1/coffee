@@ -1,57 +1,50 @@
 import { useState } from "react";
-import { CiGrid2H, CiGrid2V } from "react-icons/ci";
-import { FaArrowLeft } from "react-icons/fa";
-import CategoriesTabs from "../Components/CategoriesTabs";
-import ColProduct from "../Components/ColProduct";
-import DisplayProduct from "../Components/DisplayProduct";
-import ProductCard from "../Components/Product";
-import { productsData, productsData2 } from "../data";
+import PriceTabs from "../Components/PriceTabs";
+import { productsData } from "../data";
 import type { IProduct } from "../interfaces";
 
 
 const CategoryDetails = () => {
-  const [selectedProduct, setSelectedProduct] = useState<IProduct>(productsData[0]);
-  const [activeTab, setActiveTab] = useState<"data" | "images">("data");
+  const [selectedProduct] = useState<IProduct>(productsData[0]);
 
   return (
-    <div className="pb-3">
-      <div className="absolute top-4 left-4 cursor-pointer text-main z-100" onClick={() => window.history.back()}>
-       <FaArrowLeft/>
-      </div>
+    <div className="pb-3 space-y-5">
+      {/* <div className="absolute top-4 left-4 cursor-pointer text-black bg-[#F6F6F6] z-100" onClick={() => window.history.back()}>
+        <FaArrowLeft />
+      </div> */}
       {/* المنتج المختار */}
-      <DisplayProduct item={selectedProduct} />
-      <div className="bg-gradient-to-r rounded-t-2xl from-orange-400 to-orange-300 ">
-        <CategoriesTabs />
+      <div className="">
+        <div className="relative">
 
-
-        {/* Tabs */}
-        <div className="custom-container bg-white py-6 rounded-t-2xl">
-          <div className="flex gap-2  w-full">
-            <button
-              className={`px-4 py-2  rounded-sm   font-semibold border ${activeTab === "data"
-                ? "bg-main text-white"
-                : "bg-white text-main border-gray-300"
-                }`}
-              onClick={() => setActiveTab("data")}
-            >
-              <CiGrid2H />
-            </button>
-            <button
-              className={`px-4 py-2  rounded-sm   font-semibold border ${activeTab === "images"
-                ? "bg-main text-white"
-                : "bg-white text-main border-gray-300"
-                }`}
-              onClick={() => setActiveTab("images")}
-            >
-              <CiGrid2V />
-            </button>
-          </div>
+          <img
+            src={selectedProduct.images[0]}
+            alt={`Product `}
+            className="w-[400px] h-64 !object-contain rounded-2xl"
+          />
+          <div className="w-44 h-44 bg-[#f7fbe5] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
         </div>
-        {/* المنتجات */}
-        <div className="custom-container bg-white ">
-          <div className={`grid ${activeTab == "data" ? "grid-cols-1" : "grid-cols-2"} md:grid-cols-3 gap-4`}>
-            {activeTab === "data" &&
-              productsData.map((item: IProduct, index: number) => (
+        <div className="text-center space-y-1 relative z-10">
+          <h2 className={`text-xs font-bold mt-2 text-black `}>Flurry oreo</h2>
+          <h2 className={`text-base font-extrabold text-black`}>{selectedProduct.title}</h2>
+
+
+          <p className={`text-sm  font-medium leading-9  text-[#3C3C3C] `}>
+            {selectedProduct.desc}
+          </p>
+
+        </div>
+      </div>
+
+      <PriceTabs />
+      {/* <div className=" space-y-5 "> */}
+      {/* <div className="bg-main">
+          <CategoriesTabs />
+        </div>
+       */}
+      {/* المنتجات */}
+      {/* <div className="custom-container bg-body ">
+          <div className={`grid grid-cols-1  md:grid-cols-3 gap-2`}>
+            {productsData.map((item: IProduct, index: number) => (
                 <div
                   key={item.id}
                   onClick={() => {
@@ -63,24 +56,11 @@ const CategoryDetails = () => {
                 </div>
               ))}
 
-            {activeTab === "images" &&
-              productsData2.map((item, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    setSelectedProduct(item);
-                  }}
-                >
-                  <ColProduct
-                    item={item}
-                  />
-                </div>
-              ))}
+           
           </div>
-        </div>
+        </div> */}
 
-      </div>
+      {/* </div> */}
     </div>
   );
 };
