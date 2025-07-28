@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import mug from "/src/assets/mug.svg";
 const sizes = [
   { label: "X-Large", price: 50 },
   { label: "Large", price: 40 },
@@ -43,7 +43,7 @@ const PriceTabs = () => {
               }`}
             >
               <img
-                src="/src/assets/mug.svg"
+                src={mug}
                 alt="size icon"
                 style={{
                   width: getImageSize(size.label),

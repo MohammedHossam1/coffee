@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
-
+import logo from "/src/assets/logo.png";
 const navLinks = [
   { label: "الرئيسيه", path: "/" },
   { label: "المنيو", path: "/menu" },
@@ -26,8 +26,8 @@ const Navbar = () => {
   };
 
   const { x, y } = getMenuButtonPosition();
-  const adjustedX = x + 20; 
-  const adjustedY = y + 20; 
+  const adjustedX = x + 20;
+  const adjustedY = y + 20;
 
   return (
     <header className="text-white py-2 pt-4 z-50 relative">
@@ -57,7 +57,7 @@ const Navbar = () => {
 
         <div className="ms-auto">
           <Link to="/">
-            <img src="/src/assets/logo.png" alt="logo" className="" />
+            <img src={logo} alt="logo" className="" />
           </Link>
         </div>
       </div>
