@@ -10,14 +10,14 @@ const sizes = [
 const getImageSize = (label: string) => {
   switch (label) {
     case "X-Large":
-      return 38;
+      return 34;
     case "Large":
-      return 33;
+      return 30;
     case "Medium":
-      return 27;
+      return 24;
     case "Small":
     default:
-      return 24;
+      return 20;
   }
 };
 
@@ -27,7 +27,7 @@ const PriceTabs = () => {
   return (
     <div className="w-full max-w-sm mx-auto">
       {/* التبويبات */}
-      <div className="flex justify-between rounded-full p-1 mb-4">
+      <div className="flex justify-between rounded-full p-1 mb-2 xxs:mb-4">
         {sizes.map((size) => (
           <button
             key={size.label}
@@ -35,7 +35,7 @@ const PriceTabs = () => {
             className="flex flex-col items-center space-y-1"
           >
             <div
-              className={`size-16 text-sm font-medium rounded-full transition-all flex items-center justify-center duration-300
+              className={`size-12 xxs:size-16 text-sm font-medium rounded-full transition-all flex items-center justify-center duration-300
               ${
                 selectedSize.label === size.label
                   ? "bg-main text-white"

@@ -6,11 +6,11 @@ const DesktopBlocker = () => {
     useEffect(() => {
         const userAgent = navigator.userAgent.toLowerCase();
         const isMobileDevice =
-            /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+            /android|iphone|ipod|blackberry|iemobile|opera mini/i.test(
                 userAgent
             );
 
-        const isSmallScreen = window.innerWidth <= 768;
+        const isSmallScreen = window.innerWidth <= 762;
         console.log(userAgent)
         setIsMobile(isMobileDevice || isSmallScreen);
     }, []);

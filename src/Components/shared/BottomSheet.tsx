@@ -39,7 +39,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) 
           <Backdrop onClose={onClose} />
           <motion.div
             ref={sheetRef}
-            className="fixed  bottom-0 z-70 top-20 left-0 right-0 bg-white rounded-t-2xl shadow-xl p-4"
+            className="fixed  bottom-0 z-70 top-50 left-0 right-0 bg-white rounded-t-2xl shadow-xl p-4"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}

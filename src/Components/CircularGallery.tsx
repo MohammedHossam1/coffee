@@ -1,13 +1,13 @@
 import "swiper/css";
 import { categories } from "../data";
+import type { Category } from "../interfaces";
 
-export default function CurvedSwiper({ setActiveTab}:{setActiveTab: any}) {
+export default function CurvedSwiper({ setActiveTab, data }: { setActiveTab: (p: number) => void, data: Category[]}) {
   const total = categories.length;
-  const curveStrength = 40; // كل ما زاد الرقم زاد الانحناء
-
+  const curveStrength = 40;
   return (
     <div className="flex justify-around relative  translate-y-5  rounded-t-full items-end gap-4 pt-10">
-      {categories.map((slide, i) => {
+      {data?.slice(0, 4).map((slide, i) => {
         // احسب النسبة من -1 إلى 1
         const t = (i / (total - 1)) * 2 - 1;
         // حرك العنصر لأعلى حسب موقعه على القوس
@@ -15,9 +15,9 @@ export default function CurvedSwiper({ setActiveTab}:{setActiveTab: any}) {
 
         return (
           <div
-          onClick={() => {
-            setActiveTab(i);
-          }}
+            onClick={() => {
+              setActiveTab(i);
+            }}
             key={slide.id}
             className="flex flex-col items-center  transition-transform duration-300"
             style={{
