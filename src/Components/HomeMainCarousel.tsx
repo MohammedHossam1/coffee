@@ -20,7 +20,7 @@ export default function HomeMainCarousel() {
   };
 
   return (
-    <div className="max-w-xl mx-auto relative">
+    <div className="w-full  mx-auto relative">
       <Swiper
         modules={[Navigation, Autoplay]}
         navigation={false}
@@ -32,7 +32,7 @@ export default function HomeMainCarousel() {
       >
         {categories2.map((category, i) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-48">
+            <div className="relative w-full h-42 xxs:h-52">
               <img
                 src={category.image}
                 alt={category.name}

@@ -43,11 +43,12 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ item, details = false }
         >
           {images.map((img: string, i: number) => (
             <SwiperSlide key={i} className="rounded-2xl overflow-hidden relative">
-              <div className="w-44 h-44 bg-[#FFFFFF1A] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
+              {/* the circle bg */}
+              <div className="size-34 xxs:size-44 bg-[#FFFFFF1A] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
               <img
                 src={img}
                 alt={`Product ${i}`}
-                className="w-full h-64 !object-contain rounded-2xl"
+                className="w-full h-38 xxs:h-56 !object-contain rounded-2xl"
               />
             </SwiperSlide>
           ))}
@@ -57,7 +58,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ item, details = false }
             <img
               src={imgBg}
               alt={`Product `}
-              className="w-full object-cover object-top   h-full"
+              className="w-full object-cover object-top   h-fulsl"
             />
           </div>
         )}
@@ -76,7 +77,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ item, details = false }
             </p>
           )}
         </div>
-        {!details && <div ref={paginationRef} className="pb-10 pt-5 flex justify-center gap-2"></div>}
+        {!details && <div ref={paginationRef} className="pb-5 pt-0 flex justify-center gap-2"></div>}
       </div>
 
 

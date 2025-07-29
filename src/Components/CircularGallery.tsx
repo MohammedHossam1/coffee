@@ -1,65 +1,41 @@
-import { useRef } from "react";
-import SwiperCore, { Swiper as SwiperClass } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { productsData } from "../data";
+import { categories } from "../data";
 
-
-export default function CurvedSwiper() {
-  const swiperRef = useRef<SwiperCore | null>(null);
-  const slidesPerView = 4;
-
-  const handleProgress = (swiper: SwiperClass) => {
-    if (!swiper.slides || !swiper.slides.length) return;
-
-    const centerStart = swiper.activeIndex + Math.floor(slidesPerView / 2) - 1;
-    const centerIndices = [centerStart, centerStart + 1];
-
-    swiper.slides.forEach((slideEl: any, index: number) => {
-      const distanceToCenter = Math.min(
-        Math.abs(index - centerIndices[0]),
-        Math.abs(index - centerIndices[1])
-      );
-      const translateY =
-        distanceToCenter === 0
-          ? 0
-          : distanceToCenter === 1
-            ? 35
-            : 20;
-
-      slideEl.style.transform = `translateY(${translateY}px)`;
-      slideEl.style.transition = `transform 0.3s ease`;
-    });
-  };
+export default function CurvedSwiper({ setActiveTab}:{setActiveTab: any}) {
+  const total = categories.length;
+  const curveStrength = 40; // كل ما زاد الرقم زاد الانحناء
 
   return (
-    <Swiper
-      onSwiper={(swiper) => {
-        swiperRef.current = swiper;
-        handleProgress(swiper);
-      }}
-      slidesPerView={slidesPerView}
-      spaceBetween={30}
-      loop={false}
-      onSlideChange={handleProgress}
-      onSetTranslate={handleProgress}
-      onResize={handleProgress}
-    >
-      {productsData.map((slide) => (
-        <SwiperSlide
-          key={slide.id}
-          className="text-center  rounded-lg"
-        >
-          <div className="rounded-full size-18 bg-white text-main flex items-center justify-center">
-            <img
-              src={slide.images[0]}
-              alt={slide.title}
-              className="size-12 object-contain"
-            />
+    <div className="flex justify-around relative  translate-y-5  rounded-t-full items-end gap-4 pt-10">
+      {categories.map((slide, i) => {
+        // احسب النسبة من -1 إلى 1
+        const t = (i / (total - 1)) * 2 - 1;
+        // حرك العنصر لأعلى حسب موقعه على القوس
+        const yOffset = -Math.pow(t, 2) * curveStrength + curveStrength;
+
+        return (
+          <div
+          onClick={() => {
+            setActiveTab(i);
+          }}
+            key={slide.id}
+            className="flex flex-col items-center  transition-transform duration-300"
+            style={{
+              transform: `translateY(-${yOffset}px)`,
+            }}
+          >
+
+            <div className="rounded-full size-14 bg-white text-main flex items-center justify-center">
+              <img
+                src={slide.image}
+                alt={slide.name}
+                className="size-9 object-contain"
+              />
+            </div>
+            <h3 className="text-xs font-extrabold mt-2">{slide.name}</h3>
           </div>
-            <h3 className="text-xs font-extrabold my-2">{slide.title}</h3>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+        );
+      })}
+    </div>
   );
 }

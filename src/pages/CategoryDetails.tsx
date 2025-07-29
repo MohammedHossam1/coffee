@@ -19,16 +19,16 @@ const CategoryDetails = () => {
           <img
             src={selectedProduct.images[0]}
             alt={`Product `}
-            className="w-full h-64 !object-contain rounded-2xl"
+            className="w-full h-44 !object-contain rounded-2xl"
           />
-          <div className="w-44 h-44 bg-[#f7fbe5] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="size-36 bg-[#f7fbe5] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
         </div>
         <div className="text-center space-y-1 relative z-10">
           <h2 className={`text-xs font-bold mt-2 text-black `}>Flurry oreo</h2>
           <h2 className={`text-base font-extrabold text-black`}>{selectedProduct.title}</h2>
 
 
-          <p className={`text-sm  font-medium leading-9  text-[#3C3C3C] `}>
+          <p className={`text-sm  font-medium leading-7  text-[#3C3C3C] `}>
             {selectedProduct.desc}
           </p>
 

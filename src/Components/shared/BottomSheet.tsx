@@ -57,7 +57,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, children }) 
               <h1 className="text-sm font-extrabold">تفاصيل المنتج</h1>
               <div onClick={onClose}><FaX size={10} /></div>
             </div>
-            <div className="overflow-y-auto hide-scrollbar h-full py-4">
+            <div className="overflow-y-autلo hide-scrلollbar h-full py-4">
               {children}
             </div>
           </motion.div>

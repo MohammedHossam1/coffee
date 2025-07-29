@@ -5,11 +5,11 @@ import DesktopBlocker from "../Components/shared/DesktopBlocker";
 const MainLayout = () => {
 
   return (
-    <div dir="rtl" className="min-h-screen flex flex-col gap-4">
-      <div className="">
+    <div dir="rtl" className=" flex flex-col gap-4 h-screen !overflow-hidden">
+      <div className="h-full">
         <DesktopBlocker />
         <Navbar />
-        <main className="flex-grow !overflow-x-hidden min-h-screen">
+        <main className="flex-grow h-full ">
           <Outlet />
         </main>
        

@@ -94,8 +94,6 @@ export const categories: ICategory[] = [
   { id: 2, price: 16.99, name: "شاي", text: "Mo", image: img3 },
   { id: 3, price: 16.99, name: "عصير", text: "Mo", image: img4 },
   { id: 4, price: 16.99, name: "عصير", text: "Mo", image: img1 },
-  { id: 5, price: 16.99, name: "عصير", text: "Mo", image: img2 },
-  { id: 6, price: 16.99, name: "عصير", text: "Mo", image: img3 },
 ];
 export const categories2: ICategory[] = [
   { id: 1, price: 16.99, name: "قهوه", text: "Mo", image: img111 },

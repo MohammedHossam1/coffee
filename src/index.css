@@ -94,6 +94,7 @@ body {
 @theme {
   --color-main: #CFBDA8;
   --color-body: #F6F6F6;
+  --breakpoint-xxs: 24rem;
   --breakpoint-3xl: 120rem;
 }
 
@@ -115,14 +116,12 @@ body {
   }
 }
 
-/* كل الصور تصغير ورفع شوية */
 .bottom-slider .swiper-slide {
   transition: transform 0.3s ease;
   transform: scale(0.7) translateY(60px) !important;
   filter: grayscale(20%);
 }
 
-/* الصورة النشطة تكون بالحجم الطبيعي وبدون رفع */
 .bottom-slider .swiper-slide-active {
   transform: scale(1) translateY(-20px) !important;
   opacity: 1;
@@ -149,9 +148,13 @@ body {
 }
 
 .bottom-slider .swiper-initialized {
-  padding: 46px 0px 20px;
+  padding: 30px 0px 14px;
 }
-
+@media screen and (min-width: 377px) {
+  .bottom-slider .swiper-initialized {
+    padding: 60px 0px 44px;
+  }
+}
 body {
   @apply bg-body;
 }
@@ -166,7 +169,7 @@ body {
 }
 
 .top-slider .swiper-wrapper {
-  padding: 25px 0px 30px !important;
+  padding: 20px 0px 10px !important;
 }
 
 /* sheet */
@@ -218,10 +221,10 @@ body {
 }
 
 .hide-scrollbar {
-  scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE 10+ */
+  scrollbar-width: none;        
+  -ms-overflow-style: none;     
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;                /* Chrome/Safari */
+  display: none;              
 }
