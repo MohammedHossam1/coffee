@@ -11,8 +11,9 @@ const MainLayout = () => {
         <Navbar />
         <main className="flex-grow h-full ">
           <Outlet />
+          {/* <Test /> */}
         </main>
-       
+
       </div>
     </div>
   );
