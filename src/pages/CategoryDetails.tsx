@@ -1,23 +1,17 @@
-import { useState } from "react";
 import PriceTabs from "../Components/PriceTabs";
-import { productsData } from "../data";
-import type { IProduct } from "../interfaces";
+import type { Product } from "../interfaces";
 
 
-const CategoryDetails = () => {
-  const [selectedProduct] = useState<IProduct>(productsData[0]);
+const CategoryDetails = ({ selectedProduct }: { selectedProduct: Product }) => {
 
   return (
     <div className="pb-3 space-y-5">
-      {/* <div className="absolute top-4 left-4 cursor-pointer text-black bg-[#F6F6F6] z-100" onClick={() => window.history.back()}>
-        <FaArrowLeft />
-      </div> */}
-      {/* المنتج المختار */}
+      
       <div className="">
         <div className="relative">
 
           <img
-            src={selectedProduct.images[0]}
+            src={selectedProduct.image}
             alt={`Product `}
             className="w-full h-30 xxs:h-44 !object-contain rounded-2xl"
           />
@@ -25,42 +19,18 @@ const CategoryDetails = () => {
         </div>
         <div className="text-center space-y-1 relative z-10">
           <h2 className={`text-xs font-bold mt-2 text-black `}>Flurry oreo</h2>
-          <h2 className={`text-base font-extrabold text-black`}>{selectedProduct.title}</h2>
+          <h2 className={`text-base font-extrabold text-black`}>{selectedProduct.name.ar}</h2>
 
 
           <p className={`text-xs xxs:text-sm  font-medium xxs:leading-7  text-[#3C3C3C] `}>
-            {selectedProduct.desc}
+            {selectedProduct.description.ar}
           </p>
 
         </div>
       </div>
 
-      <PriceTabs />
-      {/* <div className=" space-y-5 "> */}
-      {/* <div className="bg-main">
-          <CategoriesTabs />
-        </div>
-       */}
-      {/* المنتجات */}
-      {/* <div className="custom-container bg-body ">
-          <div className={`grid grid-cols-1  md:grid-cols-3 gap-2`}>
-            {productsData.map((item: IProduct, index: number) => (
-                <div
-                  key={item.id}
-                  onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    setSelectedProduct(item);
-                  }}
-                >
-                  <ProductCard item={item} index={index} />
-                </div>
-              ))}
-
-           
-          </div>
-        </div> */}
-
-      {/* </div> */}
+      <PriceTabs data={selectedProduct} />
+   
     </div>
   );
 };

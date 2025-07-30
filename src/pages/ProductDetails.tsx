@@ -1,8 +1,7 @@
-import CategoryDetails from "./CategoryDetails"
 
 const ProductDetails = () => {
     return (
-        <div><CategoryDetails /></div>
+        <div></div>
     )
 }
 

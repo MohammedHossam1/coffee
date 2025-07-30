@@ -1,15 +1,13 @@
 import { useRef, useState } from "react";
-import { Autoplay, Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Autoplay, Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { categories2 } from "../data";
-import avatar1 from "../assets/avatar1.jpg";
-import avatar2 from "../assets/avatar2.jpg";
-import avatar3 from "../assets/avatar3.jpg";
+import type { Slider } from "../interfaces";
 
-export default function HomeMainCarousel() {
+export default function HomeMainCarousel({ data }: { data: Slider[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<any>(null);
 
@@ -30,34 +28,14 @@ export default function HomeMainCarousel() {
         className="rounded-xl overflow-hidden"
         ref={swiperRef}
       >
-        {categories2.map((category, i) => (
+        {data.map((item, i: number) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-42 xxs:h-52">
+            <div className="relative w-full h-46 xxs:h-52">
               <img
-                src={category.image}
-                alt={category.name}
+                src={item.image}
+                alt={item.title}
                 className="w-full h-full object-cover rounded-xl"
               />
-              <div className="absolute inset-0 bg-black/70 rounded-xl z-10" />
-              <div className="absolute z-20 top-4 start-4 inset-x-0 text-white">
-                <div>
-                  <div className="font-extrabold text-2xl">
-                    <h2>أطلــق <span className="text-main">حواســك</span>،</h2>
-                    <h2>فنجـــان بعــد فنجــان !.</h2>
-                  </div>
-                  <p className="text-xs my-2">اكتشف متعة القهوة كما لم تعشها من قبل...</p>
-                  <div className="w-full flex -space-x-1 px-5 py-3 justify-end items-center">
-                    {[avatar1, avatar2, avatar3].map((avatar, idx) => (
-                      <div key={idx} className="size-10 rounded-full border border-main overflow-hidden">
-                        <img src={avatar} alt={`avatar-${idx}`} className="w-full h-full object-cover rounded-full" />
-                      </div>
-                    ))}
-                    <div className="mx-2">
-                      <p className="text-xs font-bold">+1k</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </SwiperSlide>
         ))}

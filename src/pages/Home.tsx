@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -6,60 +6,58 @@ import CurvedSwiper from "../Components/CircularGallery";
 import DisplayProduct from "../Components/DisplayProduct";
 import HomeMainCarousel from "../Components/HomeMainCarousel";
 import BottomSheet from "../Components/shared/BottomSheet";
-import { productsData } from "../data";
+import botBg from "../assets/bot.png";
+import topBg from "../assets/top.png";
 import useGetData from "../hooks/useGetData";
 import CategoryDetails from "./CategoryDetails";
+
 import Loader from "../Components/shared/Loader";
+import type { ApiResponse, Product } from "../interfaces";
 const Home = () => {
   const [open, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
 
-  const handleSwitch = () => {
-    switch (activeTab) {
-      case 0:
-        return <div className="absolute top-0 left-[64%] z-10 w-[27vw] h-1/2 bg-[#edb471] rounded-tr-fudll" />;
-      case 1:
-        return <div className="absolute top-0 left-1/2 w-[27vw] h-1/2 bg-[#edb471]" />;
-      case 2:
-        return <div className="absolute top-0 left-[36%] w-[25vw] h-1/2 bg-[#edb471]" />;
-      case 3:
-        return <div className="absolute top-0 left-[24%] z-10 w-[25vw] xxs:w-[20vw] h-1/2 bg-[#edb471] rounded-tl-fullc" />;
-      default:
-        return <div className="absolute top-0 left-[62%] z-10 w-[25vw] h-1/2 bg-[#edb471] rounded-tr-fudll" />;
-    }
-  };
-  const { data, isLoading } = useGetData({ key: "home", url: "/home" })
+  const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
+  const [activeTab, setActiveTab] = useState(data?.data?.categories[0].id || 1);
+  useEffect(() => {
+    setActiveTab(data?.data?.categories[0].id || 1)
+  }, [data])
+  const filteredProducts = data?.data?.products.filter((product) => product.category.id === activeTab);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null); 
+
+  console.log(filteredProducts, "filteredProducts");
+  console.log(data, "data");
+
+
   if (isLoading) return <div>
     <Loader />
   </div>
 
   return (
-    <div className="flex flex-col justify-between h-full">
+    <div className="flex flex-col  justifdy-between gap-6 h-full">
+      {/* top slider */}
       <div className="custom-container w-full pt-2">
-        <HomeMainCarousel />
+        <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
-      <div className=" mt-4 xxs:mt-6 h-full flex-1"
+      <div className=" h-full flex flex-col"
+        style={{
+          background: `url(${topBg}) top / cover no-repeat`
+        }}
       >
-        <div className="relative">
-          <div className="top-slider relative z-2 ">
-            <CurvedSwiper setActiveTab={setActiveTab} data={data?.data?.categories} />
-          </div>
-          <div className="absolute top-0 left-1/2 rounded-t-full bg-[#faf1d0] size-200 -translate-x-1/2 z-0">
-            {/* orange tap */}
-            <div className="relative w-full h-full rounded-full overflow-hidden">
-              {handleSwitch()}
-            </div>
-            {/* hidden circle yellow */}
-            <div className="absolute top-2 bg-[#faf1d0]  rounded-full z-11 left-1/2 size-200 -translate-x-1/2 z-xxd1"></div>
-          </div>
+        <div className="top-slider relative z-2 ">
+          <CurvedSwiper activeTab={activeTab} setActiveTab={setActiveTab} data={data?.data?.categories || []} />
         </div>
 
-        <div onClick={() => setOpen(true)} className="h-full carousel-container relative z-2  ">
-          <DisplayProduct item={productsData[0]} />
+        <div onClick={() => setOpen(true)} className=" carousel-container relative z-2 h-full grid grid-cols-1 items-center "
+          style={{
+            background: `url(${botBg}) top / cover no-repeat`
+          }}
+        >
+          <div className="">
+            <DisplayProduct products={filteredProducts || []} details={false} onSelectProduct={setSelectedProduct}  />
+          </div>
         </div>
-
         <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
-          <CategoryDetails />
+          {selectedProduct && <CategoryDetails selectedProduct={selectedProduct} />}
         </BottomSheet>
       </div>
 
