@@ -1,4 +1,5 @@
 import PriceTabs from "../Components/PriceTabs";
+import Image from "../Components/shared/Image";
 import type { Product } from "../interfaces";
 
 
@@ -10,7 +11,7 @@ const CategoryDetails = ({ selectedProduct }: { selectedProduct: Product }) => {
       <div className="">
         <div className="relative">
 
-          <img
+          <Image
             src={selectedProduct.image}
             alt={`Product `}
             className="w-full h-30 xxs:h-44 !object-contain rounded-2xl"
