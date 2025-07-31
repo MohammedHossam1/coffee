@@ -14,6 +14,10 @@ import useGetData from "../hooks/useGetData";
 import type { ApiResponse } from "../interfaces";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+const variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { transition: { straggerChildren: 0.1 }, opacity: 1, y: 0 },
+}
 const Home = () => {
   const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
   if (isLoading) return <div>
@@ -34,29 +38,25 @@ const Home = () => {
           <h4 className="text-sm font-extrabold">المينيــو بين يديـــك :</h4>
         </div>
         <motion.div
+          variants={variants}
+          initial="hidden"
+          animate="visible"
           className="grid grid-cols-2 gap-4">
           {data?.data?.categories?.slice(0, 5).map((item, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileTap={{ scale: 0.9 }}
+            <Link to={`/categories-page/${item.id}`}
               className={`bg-white rounded-[40px] relative p-5 ${index == 1 && "row-span-2 flex flex-col justify-end"}`} key={index}>
-              <Link to={`/categories-page/${item.id}`}>
+              <div className="absolute top-5 end-5 ">
+                <GoArrowUpLeft className="text-main size-6" />
+              </div>
+              <div className="bg-red-100 rounded-full flex items-center relative justify-center size-12">
+                <Image src={item.image} alt="img1" className="rounded-full" />
+              </div>
 
-                <div className="absolute top-5 end-5 ">
-                  <GoArrowUpLeft className="text-main size-6" />
-                </div>
-                <div className="bg-red-100 rounded-full flex items-center relative justify-center size-12">
-                  <Image src={item.image} alt="img1" className="rounded-full" />
-                </div>
-
-                <div className="mt-2 pt-4 space-y-2">
-                  <h2 className="text-xs font-bold text-[#878787]">Ice Cream</h2>
-                  <h2 className="text-sm font-extrabold text-nowrap">{item.name}</h2>
-                </div>
-              </Link>
-            </motion.div>
+              <div className="mt-2 pt-4 space-y-2">
+                <h2 className="text-xs font-bold text-[#878787]">Ice Cream</h2>
+                <h2 className="text-sm font-extrabold text-nowrap">{item.name}</h2>
+              </div>
+            </Link>
           ))}
         </motion.div>
 
