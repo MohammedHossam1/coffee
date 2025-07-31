@@ -1,4 +1,5 @@
 import { useState } from "react";
+import fallbackImage from "/src/assets/fallback.png";
 
 interface ImageProps {
   src: string;
@@ -13,7 +14,7 @@ export default function Image({
   src,
   alt = "image",
   className = "",
-  fallbackSrc = "/src/assets/fallback.png", 
+  fallbackSrc = fallbackImage, 
   objectFit = "contain",
   loading = "lazy",
 }: ImageProps) {
