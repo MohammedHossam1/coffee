@@ -29,7 +29,7 @@ const CategoriesPage = () => {
   </div>
 
   return (
-    <div className="flex flex-col  justifdy-between gap-6 xxs:gap-20 h-full !overflow-hidden">
+    <div className="flex flex-col  justifdy-between gap-14 xxs:gap-26 h-full !overflow-hidden">
       {/* top slider */}
       <div className="custom-container w-full pt-2">
         <HomeMainCarousel data={data?.data?.sliders || []} />

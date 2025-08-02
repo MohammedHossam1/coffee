@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import { categories2 } from "../data";
 import type { Slider } from "../interfaces";
+import Image from "./shared/Image";
 
 export default function HomeMainCarousel({ data }: { data: Slider[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -30,8 +31,8 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
       >
         {data.map((item, i: number) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-46 xxs:h-52">
-              <img
+            <div className="relative w-full h-38 xxs:h-42">
+              <Image
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover rounded-xl"

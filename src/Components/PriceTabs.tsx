@@ -1,6 +1,7 @@
 import { useState } from "react";
 import mug from "/src/assets/mug.svg";
 import { type Size, type Product } from "../interfaces";
+import Image from "./shared/Image";
 
 
 const getImageSize = (label: string) => {
@@ -37,7 +38,7 @@ const PriceTabs = ({ data }: { data: Product }) => {
                   : "text-gray-600 bg-[#F5F5F5] hover:bg-gray-200"
                 }`}
             >
-              <img
+              <Image
                 src={mug}
                 alt="size icon"
                 style={{

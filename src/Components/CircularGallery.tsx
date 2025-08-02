@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import "swiper/css";
 import { categories } from "../data";
 import type { Category } from "../interfaces";
+import Image from "./shared/Image";
 
 export default function CurvedSwiper({ activeTab, setActiveTab, data }: { activeTab: number, setActiveTab: any, data: Category[] }) {
 
@@ -38,7 +39,7 @@ export default function CurvedSwiper({ activeTab, setActiveTab, data }: { active
               }}
               transition={{ duration: 0.3 }}
             >
-              <img
+              <Image
                 src={slide.image}
                 alt={slide.name}
                 className="size-9 object-contain"

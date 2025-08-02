@@ -1,4 +1,5 @@
 import type { IProduct } from "../interfaces";
+import Image from "./shared/Image";
 
 const ProductCard = ({ item }: { item: IProduct; index: number }) => {
 
@@ -8,7 +9,7 @@ const ProductCard = ({ item }: { item: IProduct; index: number }) => {
       {/* صورة المنتج بخلفية باهتة */}
       <div className="flex gap-1 items-center ">
         <div className={`w-32 h-32 flex-shrink-0 flex items-center justify-center relative`}>
-          <img
+          <Image
             src={item.images[0]}
             alt={item.title}
             className="w-24 h-24 object-contain scale-[1.2] relative z-1"

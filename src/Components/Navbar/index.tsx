@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiArrowRight, FiMenu, FiX } from "react-icons/fi";
 import logo from "/src/assets/logo.png";
+import Image from "../shared/Image";
 const navLinks = [
   { label: "الرئيسيه", path: "/" },
   { label: "المنيو", path: "/menu" },
@@ -11,7 +12,8 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const getCircleSize = () => {
     const vw = window.innerWidth;
     const vh = window.innerHeight;
@@ -24,6 +26,7 @@ const Navbar = () => {
       y: rect?.top ?? 0,
     };
   };
+  const isCategoriesPage = location.pathname.includes("categories");
 
   const { x, y } = getMenuButtonPosition();
   const adjustedX = x + 20;
@@ -32,14 +35,26 @@ const Navbar = () => {
   return (
     <header className="text-white py-2 pt-4 z-50 relative">
       <div className="custom-container flex items-center justify-between">
-        {/* زر الموبايل */}
+        {/* زر الموبايل أو الرجوع */}
         <button
           ref={menuBtnRef}
           className={`md:hidden text-2xl bg-black hover:bg-black/70 p-2 rounded-full z-[100] ${isOpen ? "fixed top-3 start-4" : "absolute top-3 start-4"}`}
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label="Toggle menu"
+          onClick={() => {
+            if (isCategoriesPage) {
+              navigate(-1);
+            } else {
+              setIsOpen((prev) => !prev);
+            }
+          }}
+          aria-label={isCategoriesPage ? "رجوع" : "Toggle menu"}
         >
-          {isOpen ? <FiX className="text-white size-5" /> : <FiMenu className="text-main size-5" />}
+          {isCategoriesPage ? (
+            <FiArrowRight className="text-white size-5" />
+          ) : isOpen ? (
+            <FiX className="text-white size-5" />
+          ) : (
+            <FiMenu className="text-main size-5" />
+          )}
         </button>
 
         {/* لينكات الديسكتوب */}
@@ -57,7 +72,7 @@ const Navbar = () => {
 
         <div className="ms-auto">
           <Link to="/">
-            <img src={logo} alt="logo" className="" />
+            <Image src={logo} alt="logo" className="" />
           </Link>
         </div>
       </div>

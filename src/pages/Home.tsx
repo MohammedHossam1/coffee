@@ -42,7 +42,7 @@ const Home = () => {
           animate="visible"
           className="grid grid-cols-2 gap-4">
           {data?.data?.categories?.slice(0, 5).map((item, index) => (
-            <Link to={`/categories-page/${item.id}`}
+            <Link to={`/categories/${item.id}`}
               className={`bg-white rounded-[40px] relative p-5 ${index == 1 && "row-span-2 flex flex-col justify-end"}`} key={index}>
               <div className="absolute top-5 end-5 ">
                 <GoArrowUpLeft className="text-main size-6" />

@@ -3,6 +3,7 @@ import Capa from "../assets/cat-tabs/Capa.svg";
 import boza from "../assets/cat-tabs/boza.svg";
 import cafe from "../assets/cat-tabs/cafe.svg";
 import drinks from "../assets/cat-tabs/drinks.svg";
+import Image from "./shared/Image";
 const categories = [
   { id: 1, name: "بـوظة", src: boza },
   { id: 2, name: "عصـــائر", src: Capa },
@@ -34,7 +35,7 @@ const CategoriesTabs = () => {
                 `}
             >
               <div className="mb-1">
-                <img src={cat.src} alt={cat.name} className="w-8 h-8" />
+                <Image src={cat.src} alt={cat.name} className="w-8 h-8" />
               </div>
               <span className="text-[10px] font-bold">{cat.name}</span>
             </button>

@@ -8,6 +8,7 @@ interface ImageProps {
   fallbackSrc?: string;
   objectFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
   loading?: "lazy" | "eager";
+  style?: React.CSSProperties;
 }
 
 export default function Image({
@@ -17,6 +18,7 @@ export default function Image({
   fallbackSrc = fallbackImage, 
   objectFit = "contain",
   loading = "lazy",
+  style
 }: ImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
 
@@ -31,6 +33,7 @@ export default function Image({
       className={`object-${objectFit} ${className}`}
       onError={handleError}
       loading={loading}
+      style={style}
     />
   );
 }
