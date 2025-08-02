@@ -23,7 +23,6 @@ const Home = () => {
   if (isLoading) return <div>
     <Loader />
   </div>
-  console.log(data, "data");
 
   return (
     <div className="flex flex-col custom-container   justifdy-between gap-6 h-full">

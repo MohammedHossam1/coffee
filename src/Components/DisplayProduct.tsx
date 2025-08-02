@@ -18,7 +18,6 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
   const paginationRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log("products", products)
   useEffect(() => {
     if (paginationRef.current && swiperRef.current) {
       if (swiperRef.current.params.pagination) {
@@ -28,12 +27,9 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
         swiperRef.current.pagination.update();
       }
     }
-  }, []);
+  }, [products]);
 
-  useEffect(() => {
-    console.log("paginationRef.current ", paginationRef.current)
-    console.log("swiperRef.curren ", swiperRef.current)
-  }, [])
+
   if (products.length === 0) return <h2 className="text-2xl font-bold text-center">لا يوجد منتجات</h2>
   return (
     <>

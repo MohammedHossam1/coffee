@@ -17,15 +17,11 @@ import type { ApiResponse, Product } from "../interfaces";
 const CategoriesPage = () => {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
-  console.log(id, "id");
   const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
   const [activeTab, setActiveTab] = useState(Number(id) || data?.data?.categories[0].id || 1);
-
-  const filteredProducts = data?.data?.products.filter((product) => product.category.id === activeTab);
+  const filteredProducts = data?.data?.products.filter((product) => product.category.id === activeTab) ?? [];
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  console.log(filteredProducts, "filteredProducts");
-  console.log(data, "data");
 
 
   if (isLoading) return <div>
@@ -33,7 +29,7 @@ const CategoriesPage = () => {
   </div>
 
   return (
-    <div className="flex flex-col  justifdy-between gap-6 xxs:gap-10 h-full !overflow-hidden">
+    <div className="flex flex-col  justifdy-between gap-6 xxs:gap-20 h-full !overflow-hidden">
       {/* top slider */}
       <div className="custom-container w-full pt-2">
         <HomeMainCarousel data={data?.data?.sliders || []} />
@@ -47,7 +43,7 @@ const CategoriesPage = () => {
           <CurvedSwiper activeTab={activeTab} setActiveTab={setActiveTab} data={data?.data?.categories || []} />
         </div>
 
-        <div onClick={() => setOpen(true)} className=" carousel-container relative z-2 h-full grid grid-cols-1 items-center "
+        <div onClick={() => setOpen(filteredProducts.length > 0 ? true : false)} className=" carousel-container relative z-2 h-full grid grid-cols-1 items-center "
           style={{
             background: `url(${botBg}) top / cover no-repeat`
           }}
@@ -56,9 +52,9 @@ const CategoriesPage = () => {
             <DisplayProduct products={filteredProducts || []} details={false} onSelectProduct={setSelectedProduct} />
           </div>
         </div>
-        <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
-          {selectedProduct && <CategoryDetails selectedProduct={selectedProduct} />}
-        </BottomSheet>
+        {filteredProducts?.length > 0 && selectedProduct && <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
+          <CategoryDetails selectedProduct={selectedProduct} />
+        </BottomSheet>}
       </div>
 
     </div >

@@ -11,7 +11,6 @@ const DesktopBlocker = () => {
             );
 
         const isSmallScreen = window.innerWidth <= 762;
-        console.log(userAgent)
         setIsMobile(isMobileDevice || isSmallScreen);
     }, []);
 

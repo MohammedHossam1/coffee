@@ -5,7 +5,7 @@ import DesktopBlocker from "../Components/shared/DesktopBlocker";
 const MainLayout = () => {
 
   return (
-    <div dir="rtl" className=" flex flex-col gap-4  ">
+    <div dir="rtl" className={` flex flex-col gap-4`}>
       <div className="h-full">
         <DesktopBlocker />
         <Navbar />
