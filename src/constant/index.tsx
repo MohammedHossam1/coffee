@@ -24,3 +24,8 @@ export const breakpoints = {
         },
     },
 }
+export const navLinks = [
+    { label: "الرئيسيه", path: "/" },
+    { label: "المــنتجـــات", path: "/" },
+    { label: "إتصل بـــنا", path: "/" },
+  ];

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import mug from "/src/assets/mug.svg";
-import { type Size, type Product } from "../interfaces";
+import { type Size, type IProduct } from "../interfaces";
 import Image from "./shared/Image";
 
 
@@ -18,7 +18,7 @@ const getImageSize = (label: string) => {
   }
 };
 
-const PriceTabs = ({ data }: { data: Product }) => {
+const PriceTabs = ({ data }: { data: IProduct }) => {
   const [selectedSize, setSelectedSize] = useState<Size | null>(data?.sizes[0]);
 
   return (

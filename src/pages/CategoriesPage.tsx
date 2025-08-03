@@ -13,14 +13,14 @@ import CategoryDetails from "./CategoryDetails";
 
 import { useParams } from "react-router-dom";
 import Loader from "../Components/shared/Loader";
-import type { ApiResponse, Product } from "../interfaces";
+import type { ApiResponse, IProduct } from "../interfaces";
 const CategoriesPage = () => {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
   const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
   const [activeTab, setActiveTab] = useState(Number(id) || data?.data?.categories[0].id || 1);
   const filteredProducts = data?.data?.products.filter((product) => product.category.id === activeTab) ?? [];
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
 
 

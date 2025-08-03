@@ -4,14 +4,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Product } from "../interfaces";
+import type { IProduct } from "../interfaces";
 import Image from "./shared/Image";
 import { motion } from "framer-motion";
 
 interface DisplayProductProps {
-  products: Product[]
+  products: IProduct[]
   details?: boolean;
-  onSelectProduct?: (product: Product) => void
+  onSelectProduct?: (product: IProduct) => void
 }
 
 const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = false, onSelectProduct }) => {

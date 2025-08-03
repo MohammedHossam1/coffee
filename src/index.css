@@ -88,19 +88,19 @@
 
 body {
   font-family: 'Lama Sans', sans-serif !important;
-  background: white;
+  /* background: white; */
 }
 
 /* genral config */
 @theme {
   --color-main: #CFBDA8;
+  --color-green-main: #B3D300;
   --color-body: #F6F6F6;
   --breakpoint-xxs: 24rem;
   --breakpoint-3xl: 120rem;
 }
 
 @utility custom-container {
-  margin-inline: auto;
   padding-inline: 1rem;
 
   @variant lg {
@@ -228,4 +228,20 @@ body {
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;              
+}
+.before-dot {
+  position: relative;
+  padding-right: 16px; /* مساحة علشان الدائرة */
+}
+
+.before-dot::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  @apply bg-green-main;
+  border-radius: 50%;
 }

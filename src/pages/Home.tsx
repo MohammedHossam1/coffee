@@ -1,22 +1,33 @@
-import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6"; // Fa6 فيها أحدث أيقونات
+import { motion } from "framer-motion";
 import { GoArrowUpLeft } from "react-icons/go";
 import { TbMenu3 } from "react-icons/tb";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HomeMainCarousel from "../Components/HomeMainCarousel";
+import Social from "../Components/Social";
 import Image from "../Components/shared/Image";
 import Loader from "../Components/shared/Loader";
 import playIC from "../assets/home/play.svg";
 import slide1 from "../assets/home/slide1.png";
 import useGetData from "../hooks/useGetData";
 import type { ApiResponse } from "../interfaces";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import DesctopHome from "../Components/DesctopHome";
+import Testimonials from "../Components/Testimonials";
+import MapSection from "../Components/MapSection";
 const variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { transition: { straggerChildren: 0.1 }, opacity: 1, y: 0 },
+}
+const MobileSectionHeader = ({ title, icon }: { title: string, icon?: boolean }) => {
+  return (
+    <div className="flex gap-2 items-center mb-4">
+      <h4 className="text-sm font-extrabold ">{title}:</h4>
+      {icon && <TbMenu3 />}
+    </div>
+  )
 }
 const Home = () => {
   const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
@@ -25,22 +36,19 @@ const Home = () => {
   </div>
 
   return (
-    <div className="flex flex-col custom-container   justifdy-between gap-6 h-full">
+    <div className="flex flex-col w-full max-md:gap-3 h-full">
       {/* top slider */}
-      <div className="w-full pt-2">
+      <div className="w-full pt-2 max-lg:custom-container ">
         <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
 
-      <div className=" space-y-4 pb-5">
-        <div className=" flex gap-2 ">
-          <TbMenu3 />
-          <h4 className="text-sm font-extrabold">المينيــو بين يديـــك :</h4>
-        </div>
+      <div className=" md:hidden custom-container  ">
+        <MobileSectionHeader icon={true} title={"المينيــو بين يديـــك "} />
         <motion.div
           variants={variants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 gap-4">
+          className="grid grid-cols-2  w-full gap-4">
           {data?.data?.categories?.slice(0, 5).map((item, index) => (
             <Link to={`/categories/${item.id}`}
               className={`bg-white rounded-[40px] relative p-5 ${index == 1 && "row-span-2 flex flex-col justify-end"}`} key={index}>
@@ -53,14 +61,17 @@ const Home = () => {
 
               <div className="mt-2 pt-4 space-y-2">
                 <h2 className="text-xs font-bold text-[#878787]">Ice Cream</h2>
-                <h2 className="text-sm font-extrabold text-nowrap">{item.name}</h2>
+                <h2 className="text-sm font-extrabold  text-nowrap">{item.name}</h2>
               </div>
             </Link>
           ))}
         </motion.div>
+      </div>
+
+      <div className="custom-container  max-md:space-y-3 block md:hidden w-full pb-7">
 
         {/* vedios */}
-        <h4 className="text-sm font-extrabold">نـــــــاس كــانو مثلك :</h4>
+        <MobileSectionHeader title={"نـــــــاس كــانو مثلك "} />
         <div className="">
           <Swiper
             slidesPerView={2.2}
@@ -100,21 +111,38 @@ const Home = () => {
             ))}
           </Swiper>
         </div>
+
         {/* social */}
-        <h4 className="text-sm font-extrabold">تـــــــابعنا :</h4>
-        <div className="flex gap-2 items-center">
-          <div className="bg-black text-white rounded-full flex items-center justify-center size-12">
-            <FaFacebookF className="w-6 h-6" />
-          </div>
-          <div className="bg-black text-white rounded-full flex items-center justify-center size-12">
-            <FaInstagram className="w-6 h-6" />
-          </div>
-          <div className="bg-black text-white rounded-full flex items-center justify-center size-12">
-            <FaXTwitter className="w-6 h-6" />
-          </div>
-          <div className="bg-black text-white rounded-full flex items-center justify-center size-12">
-            <FaYoutube className="w-6 h-6" />
-          </div>
+        <MobileSectionHeader title={"تـــــــابعنا "} />
+        <Social />
+      </div>
+
+
+
+
+
+
+
+
+
+      <div className="max-md:hidden">
+        <div className="custom-container ">
+          <DesctopHome data={data?.data || { categories: [], sliders: [], products: [] }} />
+        </div>
+        <div className="w-full pt-2 max-lg:custom-container ">
+          <HomeMainCarousel data={data?.data?.sliders || []} />
+        </div>
+        <div className=" custom-container ">
+          <DesctopHome data={data?.data || { categories: [], sliders: [], products: [] }} />
+        </div>
+        <div className="w-full pt-2 max-lg:custom-container ">
+          <HomeMainCarousel data={data?.data?.sliders || []} />
+        </div>
+        <div className="custom-container py-5">
+          <Testimonials />
+        </div>
+        <div className="">
+          <MapSection />
         </div>
       </div>
     </div >
@@ -122,5 +150,3 @@ const Home = () => {
 };
 
 export default Home;
-
-

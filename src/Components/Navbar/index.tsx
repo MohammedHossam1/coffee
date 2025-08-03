@@ -1,18 +1,19 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { FiArrowRight, FiMenu, FiX } from "react-icons/fi";
-import logo from "/src/assets/logo.png";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Social from "../Social";
+import ThemeToggle from "../shared/ThemeToggle";
 import Image from "../shared/Image";
-const navLinks = [
-  { label: "الرئيسيه", path: "/" },
-  { label: "المنيو", path: "/menu" },
-];
+import logo from "../../assets/logo.png";
+import { navLinks } from "../../constant";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
+
   const navigate = useNavigate();
   const getCircleSize = () => {
     const vw = window.innerWidth;
@@ -33,7 +34,7 @@ const Navbar = () => {
   const adjustedY = y + 20;
 
   return (
-    <header className="text-white py-2 pt-4 z-50 relative">
+    <header className="dark:text-white py-2 pt-4 z-50 relative">
       <div className="custom-container flex items-center justify-between">
         {/* زر الموبايل أو الرجوع */}
         <button
@@ -56,28 +57,48 @@ const Navbar = () => {
             <FiMenu className="text-main size-5" />
           )}
         </button>
+        <div className="max-md:hidden">
 
+          <Social />
+        </div>
         {/* لينكات الديسكتوب */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className="hover:underline transition-all duration-200"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <nav className="hidden md:flex flex-col gap-4 items-center">
+          <div className="">
+            <div className="ms-auto">
+              <Link to="/">
+                <h1 className="text-base md:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily doze</h1>
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center gap-6">
+            {navLinks.map((link, index) => (
+              <div key={link.label} className="flex items-center gap-6">
+                <Link
+                  to={link.path}
+                  className="hover:underline md:text-sm transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
 
-        <div className="ms-auto">
+                {/* أضف dot إلا بعد آخر عنصر */}
+                {index !== navLinks.length - 1 && (
+                  <span className="w-1 h-1 bg-black dark:bg-white rounded-full"></span>
+                )}
+              </div>
+            ))}
+          </div>
+        </nav>
+        <div className="max-md:hidden">
+          <ThemeToggle />
+        </div>
+
+        <div className="ms-auto md:hidden">
           <Link to="/">
             <Image src={logo} alt="logo" className="" />
           </Link>
         </div>
       </div>
 
-      {/* Overlay المتحرك */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -95,7 +116,7 @@ const Navbar = () => {
           >
             {navLinks.map((link) => (
               <Link
-                key={link.path}
+                key={link.label}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className="text-xl font-medium hover:underline"

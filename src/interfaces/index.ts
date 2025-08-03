@@ -1,11 +1,4 @@
-export interface IProduct {
-  id: number;
-  images: string[];
-  title: string;
-  price: number;
-  category: string
-  desc: string
-}
+
 export interface ICategory {
   id: number;
   image: string;
@@ -25,7 +18,7 @@ export interface Category {
 }
 export interface Size { id: number, name: string, currency: string; price: number }
 
-export interface Product {
+export interface IProduct {
   id: number;
   name: {
     en: string;
@@ -51,7 +44,7 @@ export interface Slider {
 
 export interface ApiData {
   categories: Category[];
-  products: Product[];
+  products: IProduct[];
   sliders: Slider[];
 }
 
