@@ -141,7 +141,7 @@ const Home = () => {
         <div className="custom-container py-5">
           <Testimonials />
         </div>
-        <div className="">
+        <div className="pt-10">
           <MapSection />
         </div>
       </div>
