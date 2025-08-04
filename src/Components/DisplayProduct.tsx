@@ -28,6 +28,9 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
       }
     }
   }, [products]);
+  useEffect(() => {
+    console.log(products,"products")
+  },[products])
 
 
   if (products.length === 0) return <h2 className="text-2xl font-bold text-center">لا يوجد منتجات</h2>
@@ -51,7 +54,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
             >
               {products.map((item, i) => (
                 <SwiperSlide
-                  key={i}
+                  key={item.id}
                   className="rounded-2xl overflow-hidden relative"
                   onClick={() => onSelectProduct && onSelectProduct(item)}
                 >
@@ -72,7 +75,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.3 }}
-                        className="text-center space-y-1 -translate-s-2 xxs:-translate-y-8 relative z-10">
+                        className="text-center space-y-1  sm:-translate-y-0  relative z-10">
                         <motion.h2
                           layout
                           className={`text-sm xxs:text-base font-bold xxs:mt-2 ${details ? "text-black" : "text-white"} ${activeIndex !== i ? "opacity-0 scale-95 pointer-events-none" : ""

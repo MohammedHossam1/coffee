@@ -6,17 +6,19 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import HomeDesctopCategories from "../Components/Desctop/HomeDesctopCategories";
+import DesctopProductsSection from "../Components/DesctopHome";
+import Footer from "../Components/Footer";
 import HomeMainCarousel from "../Components/HomeMainCarousel";
+import MapSection from "../Components/MapSection";
 import Social from "../Components/Social";
+import Testimonials from "../Components/Testimonials";
 import Image from "../Components/shared/Image";
 import Loader from "../Components/shared/Loader";
 import playIC from "../assets/home/play.svg";
 import slide1 from "../assets/home/slide1.png";
 import useGetData from "../hooks/useGetData";
 import type { ApiResponse } from "../interfaces";
-import DesctopHome from "../Components/DesctopHome";
-import Testimonials from "../Components/Testimonials";
-import MapSection from "../Components/MapSection";
 const variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { transition: { straggerChildren: 0.1 }, opacity: 1, y: 0 },
@@ -36,13 +38,13 @@ const Home = () => {
   </div>
 
   return (
-    <div className="flex flex-col w-full max-md:gap-3 h-full">
+    <div className="flex flex-col max-md:justify-between  w-full max-md:gap-3 h-full">
       {/* top slider */}
       <div className="w-full pt-2 max-lg:custom-container ">
         <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
-
-      <div className=" md:hidden custom-container  ">
+      {/* Mobile */}
+      <div className=" lg:hidden custom-container  ">
         <MobileSectionHeader icon={true} title={"المينيــو بين يديـــك "} />
         <motion.div
           variants={variants}
@@ -68,7 +70,7 @@ const Home = () => {
         </motion.div>
       </div>
 
-      <div className="custom-container  max-md:space-y-3 block md:hidden w-full pb-7">
+      <div className="lg:hidden custom-container  max-md:space-y-3 block  w-full pb-7">
 
         {/* vedios */}
         <MobileSectionHeader title={"نـــــــاس كــانو مثلك "} />
@@ -114,37 +116,35 @@ const Home = () => {
 
         {/* social */}
         <MobileSectionHeader title={"تـــــــابعنا "} />
-        <Social />
+        <Social  />
       </div>
 
+      {/* Desctop  */}
+      {data?.data &&
+        <div className="max-lg:hidden ">
+          <div className="space-y-10 pt-10 xl:space-y-20 xl:pt-10">
 
+            <div className="custom-container ">
+              <DesctopProductsSection data={data?.data} />
+            </div>
+            <div className="w-full  ">
+              <HomeMainCarousel data={data?.data?.sliders} />
+            </div>
 
-
-
-
-
-
-
-      <div className="max-md:hidden">
-        <div className="custom-container ">
-          <DesctopHome data={data?.data || { categories: [], sliders: [], products: [] }} />
-        </div>
-        <div className="w-full pt-2 max-lg:custom-container ">
-          <HomeMainCarousel data={data?.data?.sliders || []} />
-        </div>
-        <div className=" custom-container ">
-          <DesctopHome data={data?.data || { categories: [], sliders: [], products: [] }} />
-        </div>
-        <div className="w-full pt-2 max-lg:custom-container ">
-          <HomeMainCarousel data={data?.data?.sliders || []} />
-        </div>
-        <div className="custom-container py-5">
-          <Testimonials />
-        </div>
-        <div className="pt-10">
-          <MapSection />
-        </div>
-      </div>
+            <div className="w-full  bg-white ">
+              <HomeDesctopCategories data={data.data} />
+            </div>
+            <div className="custom-container">
+              <Testimonials />
+            </div>
+            <div className="">
+              <MapSection />
+            </div>
+          </div>
+          <div className="max-lg:hidden">
+            <Footer />
+          </div>
+        </div>}
     </div >
   );
 };

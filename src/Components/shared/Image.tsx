@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, type ImgHTMLAttributes } from "react";
 import fallbackImage from "/src/assets/fallback.png";
 
-interface ImageProps {
+interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt?: string;
   className?: string;
@@ -15,10 +15,11 @@ export default function Image({
   src,
   alt = "image",
   className = "",
-  fallbackSrc = fallbackImage, 
+  fallbackSrc = fallbackImage,
   objectFit = "contain",
   loading = "lazy",
-  style
+  style,
+  ...rest
 }: ImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
 
@@ -34,6 +35,7 @@ export default function Image({
       onError={handleError}
       loading={loading}
       style={style}
+      {...rest}
     />
   );
 }

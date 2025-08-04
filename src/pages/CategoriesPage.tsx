@@ -2,7 +2,6 @@ import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import CurvedSwiper from "../Components/CircularGallery";
 import DisplayProduct from "../Components/DisplayProduct";
 import HomeMainCarousel from "../Components/HomeMainCarousel";
 import BottomSheet from "../Components/shared/BottomSheet";
@@ -12,6 +11,7 @@ import useGetData from "../hooks/useGetData";
 import CategoryDetails from "./CategoryDetails";
 
 import { useParams } from "react-router-dom";
+import CurvedCarousel from "../Components/CircularGallery";
 import Loader from "../Components/shared/Loader";
 import type { ApiResponse, IProduct } from "../interfaces";
 const CategoriesPage = () => {
@@ -21,7 +21,6 @@ const CategoriesPage = () => {
   const [activeTab, setActiveTab] = useState(Number(id) || data?.data?.categories[0].id || 1);
   const filteredProducts = data?.data?.products.filter((product) => product.category.id === activeTab) ?? [];
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
-
 
 
   if (isLoading) return <div>
@@ -40,7 +39,8 @@ const CategoriesPage = () => {
         }}
       >
         <div className="top-slider relative z-2 ">
-          <CurvedSwiper activeTab={activeTab} setActiveTab={setActiveTab} data={data?.data?.categories || []} />
+          {/* <CurvedSwiper activeTab={activeTab} setActiveTab={setActiveTab} data={data?.data?.categories || []} /> */}
+          <CurvedCarousel items={data?.data?.categories || []} activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
         <div onClick={() => setOpen(filteredProducts.length > 0 ? true : false)} className=" carousel-container relative z-2 h-full grid grid-cols-1 items-center "

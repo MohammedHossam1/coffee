@@ -9,11 +9,11 @@ interface ProductCardProps extends HTMLAttributes<HTMLDivElement> {
 const ProductCard = ({ item, ...props }: ProductCardProps) => {
     return (
         <div
-            className="flex flex-col gap-2  rounded-3xl"
+            className="flex flex-col gap-2  rounded-3xl "
             {...props}
         >
-            <div className="rounded-3xl overflow-hidden h-70 xl:h-92 w-full">
-                <Image src={item.image} alt={item.name.ar || "img"} className="w-full h-full object-cover" />
+            <div className="rounded-3xl overflow-hidden h-70 xl:h-72 w-full bg-white">
+                <Image src={item.image} alt={item.name.ar || "img"} className="w-full h-full object-contain p-5" />
             </div>
             <div className="px-5 p-2 space-y-3">
                 <div className="">

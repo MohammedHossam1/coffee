@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { categories2 } from "../data";
 import type { Slider } from "../interfaces";
 import Image from "./shared/Image";
 
@@ -26,16 +25,16 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
         autoplay={{ delay: 2500 }}
         loop={true}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        className="rounded-xl overflow-hidden"
+        className="rounded-2xl lg:rounded-[45px] overflow-hidden"
         ref={swiperRef}
       >
         {data.map((item, i: number) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-38 xxs:h-42 md:h-[60vh]">
+            <div className="relative w-full h-38 xxs:h-42 md:h-[30vh] lg:h-[70vh] md:bg-white">
               <Image
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-contain rounded-xl"
+                className="w-full h-full object-cover rounded-xl"
               />
             </div>
           </SwiperSlide>
@@ -43,13 +42,13 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
       </Swiper>
 
       <div className="flex justify-center space-x-1 mt-4 absolute bottom-2 z-10 left-1/2 -translate-x-1/2">
-        {categories2.map((_, i) => (
+        {data.map((_, i) => (
           <button
             key={i}
             onClick={() => handleBulletClick(i)}
             className={`transition-all duration-300 ${i === activeIndex
-              ? "bg-main w-5 h-[5px] rounded-sm"
-              : "bg-white/20 size-[5px] rounded-full"
+              ? "bg-main dark:bg-black w-5 h-[5px] rounded-sm"
+              : "bg-white/20  dark:bg-black/60 size-[5px] rounded-full"
               }`}
             aria-label={`Go to slide ${i + 1}`}
           />

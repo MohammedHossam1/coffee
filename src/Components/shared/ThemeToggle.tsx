@@ -13,13 +13,13 @@ const ThemeToggle = () => {
 
             <div className={`z-10  p-2 rounded-full ${isDark ? "" : "bg-white"}`}>
                 <FaSun
-                    className={`text-black text-[8px]   transition-opacity duration-300 ${isDark ? "opacity-40" : "opacity-100"
+                    className={`text-black text-[9px]   transition-opacity duration-300 ${isDark ? "opacity-40" : "opacity-100"
                         }`}
                 />
             </div>
             <div className={`z-10  p-2 rounded-full ${isDark ? "bg-black" : ""}`}>
                 <FaMoon
-                    className={`text-white text-[8px]   transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-40"
+                    className={`text-white text-[9px]   transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-40"
                         }`}
                 />
             </div>

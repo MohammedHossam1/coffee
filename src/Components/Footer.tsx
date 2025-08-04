@@ -6,11 +6,11 @@ import { PiPhoneCall } from "react-icons/pi";
 
 const Footer = () => {
     return (
-        <div className='custom-container py-10 bg-white'>
+        <div className='custom-container py-10 bg-white  dark:text-black' onClick={(e) => console.log(e)}>
             <div className="grid grid-cols-12 justify-items-center gap-5 py-10">
 
                 <div className="col-span-12 xl:col-span-3 xl:self-end">
-                    <Social />
+                    <Social reverse={true} />
                 </div>
                 <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-center xl:pb-20">
                     <div className="">

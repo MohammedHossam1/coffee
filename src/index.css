@@ -245,3 +245,10 @@ body {
   @apply bg-green-main;
   border-radius: 50%;
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    color-scheme: light;
+    background: white;
+    color: black;
+  }
+}

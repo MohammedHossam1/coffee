@@ -1,13 +1,19 @@
 // context/ThemeProvider.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { ThemeContext } from "./ThemeContext";
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [isDark, setIsDark] = useState(true);
+  const isMobile = typeof window !== "undefined" && /Mobi|Android/i.test(navigator.userAgent);
 
-  const toggleTheme = () => setIsDark((prev) => !prev);
-
+  useEffect(() => {
+    if (isMobile) setIsDark(false);
+  },[isMobile])
+  const toggleTheme = () => {
+    if (isMobile) return;
+    setIsDark((prev) => !prev);
+  };
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       {children}
