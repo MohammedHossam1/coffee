@@ -60,8 +60,6 @@ const Home = () => {
               <div className="rounded-full flex items-center justify-center size-12 relative shadow-[inset_0_2px_8px_rgba(0,0,0,0.2)]">
                 <Image src={item.image} alt="img1" className="rounded-full" />
               </div>
-
-
               <div className="mt-2 pt-4 space-y-2">
                 <h2 className="text-xs font-bold text-[#878787]">Ice Cream</h2>
                 <h2 className="text-sm font-extrabold  text-nowrap">{item.name}</h2>

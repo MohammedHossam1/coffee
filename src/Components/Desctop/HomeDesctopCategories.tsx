@@ -12,14 +12,14 @@ interface Props {
 const HomeDesktopCategories = ({ data }: Props) => {
   const { products } = data;
   const categories = data.categories.filter(cat =>
-    products.some(product => product.category.id === cat.id)
+    products.some(product => product.category?.id === cat.id)
   );
 
   const [activeCategoryId, setActiveCategoryId] = useState<number>(categories[0]?.id);
-  const activeCategory = categories.find((cat) => cat.id === activeCategoryId);
+  const activeCategory = categories.find((cat) => cat?.id === activeCategoryId);
   console.log(activeCategory, "activeCategory");
   const filteredProducts = products.filter(
-    (product) => product.category.id === activeCategoryId
+    (product) => product.category?.id === activeCategoryId
   );
 
   return (

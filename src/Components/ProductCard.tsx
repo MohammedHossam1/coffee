@@ -17,7 +17,7 @@ const ProductCard = ({ item, ...props }: ProductCardProps) => {
             </div>
             <div className="px-5 p-2 space-y-3">
                 <div className="">
-                    <h3 className="text-xs font-bold text-[#999999]">{item.category.name}</h3>
+                    <h3 className="text-xs font-bold text-[#999999]">{item?.category?.name}</h3>
                     <h2 className="text-2xl font-extrabold">{item.name.ar}</h2>
                 </div>
                 <div className="flex gap-2 items-center">
