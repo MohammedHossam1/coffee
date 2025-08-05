@@ -151,11 +151,13 @@ body {
 .bottom-slider .swiper-initialized {
   padding: 33px 0px 14px;
 }
+
 @media screen and (min-width: 377px) {
   .bottom-slider .swiper-initialized {
     padding: 40px 0px 34px;
   }
 }
+
 body {
   @apply bg-body;
 }
@@ -207,6 +209,7 @@ body {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -222,16 +225,18 @@ body {
 }
 
 .hide-scrollbar {
-  scrollbar-width: none;        
-  -ms-overflow-style: none;     
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none;              
+  display: none;
 }
+
 .before-dot {
   position: relative;
-  padding-right: 16px; /* مساحة علشان الدائرة */
+  padding-right: 16px;
+  /* مساحة علشان الدائرة */
 }
 
 .before-dot::before {
@@ -245,10 +250,41 @@ body {
   @apply bg-green-main;
   border-radius: 50%;
 }
+
 @media (prefers-color-scheme: dark) {
   body {
     color-scheme: light;
     background: white;
     color: black;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+
+  /* 1. أخفي السهمين (buttons) فوق وتحت */
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  /* 2. أخفي خلفية scrollbar (track) */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+    /* أو لون شفاف */
+  }
+
+  /* 3. خليك بس بالـ scrollbar-thumb (البار الصغير) */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-main;
+    border-radius: 8px;
+    /* شكل مدور */
+  }
+
+  /* 4. إعدادات عامة لل scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    /* عرض scrollbar عمودي */
+    background: transparent;
+    /* خلفية الشريط نفسها شفافة */
   }
 }

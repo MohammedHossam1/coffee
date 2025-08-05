@@ -25,7 +25,7 @@ const variants = {
 }
 const MobileSectionHeader = ({ title, icon }: { title: string, icon?: boolean }) => {
   return (
-    <div className="flex gap-2 items-center mb-4">
+    <div className="flex gap-2 items-center my-4">
       <h4 className="text-sm font-extrabold ">{title}:</h4>
       {icon && <TbMenu3 />}
     </div>
