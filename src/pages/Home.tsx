@@ -126,9 +126,7 @@ const Home = () => {
             <div className="custom-container ">
               <DesctopProductsSection data={data?.data} />
             </div>
-            <div className="w-full  ">
-              <HomeMainCarousel data={data?.data?.sliders} />
-            </div>
+         
 
             <div className="w-full  bg-white ">
               <HomeDesctopCategories data={data.data} />
