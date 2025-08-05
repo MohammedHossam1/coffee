@@ -32,7 +32,7 @@ const Navbar = () => {
   const adjustedY = y + 20;
 
   return (
-    <header className="dark:text-white py-2 pt-4 z-50 relative">
+    <header className="dark:text-white py-4  z-50 relative">
       <div className="custom-container flex items-center justify-between">
         {/* زر الموبايل أو الرجوع */}
         <button

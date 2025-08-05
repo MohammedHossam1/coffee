@@ -25,7 +25,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
     useEffect(() => {
         setActiveTab(currentIndex + 1);
     }, [currentIndex])
-    
+
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!isDragging) return;
         e.preventDefault();
@@ -62,9 +62,9 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
         if (isDragging) {
             const threshold = 20;
             if (dragOffset > threshold) {
-                prevSlide();
+                nextSlide(); // ← السحب لليسار
             } else if (dragOffset < -threshold) {
-                nextSlide();
+                prevSlide(); // ← السحب لليمين
             }
             setDragOffset(0);
             setIsDragging(false);
@@ -116,7 +116,8 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
         // خلي 4 عناصر تظهر في نفس الوقت على الموبايل
         const visibleCount = isMobile ? 4 : 1;
 
-        const basePosition = (index - currentIndex) * (itemWidth + spacing);
+        const basePosition = (currentIndex - index) * (itemWidth + spacing); // بدل (index - currentIndex)
+
         const adjustedPosition = basePosition + dragOffset;
 
         const distanceFromCenter = Math.abs(adjustedPosition) / (itemWidth + spacing);
@@ -129,7 +130,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
         return {
             transform: `translateX(${adjustedPosition}px) translateY(${yOffset}px)`,
             zIndex: totalItems - Math.abs(index - currentIndex),
-            opacity: distanceFromCenter <= maxVisibleDistance + 0.5 ? 1 : 0, 
+            opacity: distanceFromCenter <= maxVisibleDistance + 0.5 ? 1 : 0,
             pointerEvents: distanceFromCenter <= maxVisibleDistance + 0.5 ? 'auto' as const : 'none' as const,
             transition: isDragging ? 'none' : 'all 0.5s ease-out',
         };
