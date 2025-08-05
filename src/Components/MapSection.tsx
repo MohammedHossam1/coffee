@@ -13,7 +13,7 @@ const center = {
 
 const MapSection = () => {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: "AIzaSyBKXY7WXF3N0Odk07x-VEE5pA1d5j-1IQQ", // حط مفتاحك هنا
+        googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     });
 
 

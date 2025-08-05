@@ -6,25 +6,34 @@ interface CurvedCarouselProps {
     items: Category[];
     activeTab: number;
     setActiveTab: (index: number) => void;
+    initialIndex?: number;
 }
 
-const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setActiveTab }) => {
-    const [currentIndex, setCurrentIndex] = useState(activeTab || 0);
+
+const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setActiveTab, initialIndex }) => {
+    const [currentIndex, setCurrentIndex] = useState(() =>
+        initialIndex ?? items.findIndex((item) => item.id === activeTab)
+    );
+
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [dragOffset, setDragOffset] = useState(0);
-    // const [curveAngle, setCurveAngle] = useState(20); // Control curve
+    // const [curveAngle, setCurveAngle] = useState(20); 
     const carouselRef = useRef<HTMLDivElement>(null);
-
 
     const handleMouseDown = (e: React.MouseEvent) => {
         setIsDragging(true);
         setStartX(e.clientX);
         setDragOffset(0);
     };
-    useEffect(() => {
-        setActiveTab(currentIndex + 1);
-    }, [currentIndex])
+    // useEffect(() => {
+    //     const currentItem = items[currentIndex];
+    //     if (currentItem) {
+    //         setActiveTab(currentItem.id);
+    //     }
+    // }, [currentIndex, items]);
+    console.log(items, "items");
+
 
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!isDragging) return;
@@ -36,15 +45,17 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
     const handleMouseUp = () => {
         if (isDragging) {
             const threshold = 20;
-            if (dragOffset > threshold) {
+            if (dragOffset > threshold && currentIndex > 1) {
                 prevSlide();
-            } else if (dragOffset < -threshold) {
+            } else if (dragOffset < -threshold && currentIndex < items.length - 2) {
                 nextSlide();
             }
             setDragOffset(0);
             setIsDragging(false);
         }
     };
+
+
 
     const handleTouchStart = (e: React.TouchEvent) => {
         setIsDragging(true);
@@ -61,25 +72,35 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
     const handleTouchEnd = () => {
         if (isDragging) {
             const threshold = 20;
-            if (dragOffset > threshold) {
-                nextSlide(); // ← السحب لليسار
-            } else if (dragOffset < -threshold) {
-                prevSlide(); // ← السحب لليمين
+            if (dragOffset > threshold && currentIndex > 1) {
+                prevSlide();
+            } else if (dragOffset < -threshold && currentIndex < items.length - 2) {
+                nextSlide();
             }
             setDragOffset(0);
             setIsDragging(false);
         }
     };
 
+
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev + 1) % items.length);
+        setCurrentIndex((prev) => {
+            if (prev <= 2) return prev;
+            return prev - 1;
+        });
     };
 
+
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev - 1 + items.length) % items.length);
+        setCurrentIndex((prev) => {
+            if (prev >= items.length - 3) return prev;
+            return prev + 1;
+        });
     };
+
+
     const handleItemClick = (item: Category) => {
-        setCurrentIndex(items.findIndex((i) => i.id === item.id));
+        // setCurrentIndex(items.findIndex((i) => i.id === item.id));
         setActiveTab(item.id);
     };
 
@@ -110,18 +131,21 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
         const totalItems = items.length;
         const isMobile = window.innerWidth < 768;
 
-        const itemWidth = isMobile ? 80 : 280;
-        const spacing = isMobile ? 10 : 15;
+        const screenWidth = window.innerWidth;
+        const itemWidth =
+            screenWidth < 380 ? 70 : 80;
+        const spacing = isMobile ? 5 : 15;
 
-        // خلي 4 عناصر تظهر في نفس الوقت على الموبايل
-        const visibleCount = isMobile ? 4 : 1;
+        const visibleCount = 5;
+        const activeIndex = currentIndex;
 
-        const basePosition = (currentIndex - index) * (itemWidth + spacing); // بدل (index - currentIndex)
+        const basePosition = (activeIndex - index) * (itemWidth + spacing);
 
         const adjustedPosition = basePosition + dragOffset;
 
         const distanceFromCenter = Math.abs(adjustedPosition) / (itemWidth + spacing);
-        const curveOffset = Math.pow(distanceFromCenter, 1.5) * 20;
+        const curveBase = screenWidth > 740 ? 10 : screenWidth < 380 ? 15 : 20;
+        const curveOffset = Math.pow(distanceFromCenter, 1.5) * curveBase;
 
         const yOffset = adjustedPosition !== 0 ? curveOffset : 0;
 
@@ -129,7 +153,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
 
         return {
             transform: `translateX(${adjustedPosition}px) translateY(${yOffset}px)`,
-            zIndex: totalItems - Math.abs(index - currentIndex),
+            zIndex: totalItems - Math.abs(index - activeIndex),
             opacity: distanceFromCenter <= maxVisibleDistance + 0.5 ? 1 : 0,
             pointerEvents: distanceFromCenter <= maxVisibleDistance + 0.5 ? 'auto' as const : 'none' as const,
             transition: isDragging ? 'none' : 'all 0.5s ease-out',
@@ -143,7 +167,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
                 <div className="relative w-full h-30 xxs:h-40 overflow-hisdden">
                     <div
                         ref={carouselRef}
-                        className="relative w-full h-full cursor-grab active:cursor-grabbing select-none px-4"
+                        className="relative w-full h-full cursor-grab active:cursor-grabbing select-none px-10 md:px-24"
                         onMouseDown={handleMouseDown}
                         onMouseMove={handleMouseMove}
                         onMouseUp={handleMouseUp}
@@ -155,7 +179,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
                         <div className="absolute inset-0 flex items-center justify-center">
                             {items?.map((item, index) => {
                                 const itemStyle = getItemTransform(index);
-                                const isActive = index === currentIndex;
+                                const isActive = item.id === activeTab;
 
                                 return (
                                     <div
@@ -172,7 +196,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
                                                 <Image
                                                     src={item.image}
                                                     alt={item.name}
-                                                    className={`w-16 h-16 rounded-full object-cover border-2 border-white shadow-md ${isActive ? ' outline-2 outline-offset-2 outline-black' : ''}`}
+                                                    className={`size-14 xxs:size-16 rounded-full object-cover border-2 border-white shadow-md ${isActive ? ' outline-2 outline-offset-2 outline-black' : ''}`}
                                                     draggable={false}
                                                 />
                                                 {/* عنوان صغير */}

@@ -37,7 +37,7 @@ const Navbar = () => {
         {/* زر الموبايل أو الرجوع */}
         <button
           ref={menuBtnRef}
-          className={`lg:hidden text-2xl bg-black hover:bg-black/70 p-2 rounded-full z-[100] ${isOpen ? "fixed top-3 start-4" : "absolute top-3 start-4"}`}
+          className={`xl:hidden text-2xl bg-black hover:bg-black/70 p-2 rounded-full z-[100] ${isOpen ? "fixed top-3 start-4" : "absolute top-3 start-4"}`}
           onClick={() => {
             if (isCategoriesPage) {
               navigate(-1);
@@ -55,16 +55,16 @@ const Navbar = () => {
             <FiMenu className="text-main size-5" />
           )}
         </button>
-        <div className="max-lg:hidden">
+        <div className="max-xl:hidden">
 
           <Social />
         </div>
         {/* لينكات الديسكتوب */}
-        <nav className="hidden lg:flex flex-col gap-4 items-center">
+        <nav className="hidden xl:flex flex-col gap-4 items-center">
           <div className="">
             <div className="ms-auto">
               <Link to="/">
-                <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily doze</h1>
+                <h1 className="text-base xl:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily doze</h1>
               </Link>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Navbar = () => {
               <div key={link.label} className="flex items-center gap-6">
                 <Link
                   to={link.path}
-                  className="hover:underline lg:text-sm transition-all duration-200"
+                  className="hover:underline xl:text-sm transition-all duration-200"
                 >
                   {link.label}
                 </Link>
@@ -85,13 +85,13 @@ const Navbar = () => {
             ))}
           </div>
         </nav>
-        <div className="max-lg:hidden">
+        <div className="max-xl:hidden">
           <ThemeToggle />
         </div>
 
-        <div className="ms-auto lg:hidden">
+        <div className="ms-auto xl:hidden">
           <Link to="/">
-            <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily doze</h1>
+            <h1 className="text-base xl:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily doze</h1>
           </Link>
         </div>
       </div>

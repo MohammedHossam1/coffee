@@ -50,23 +50,38 @@ const Home = () => {
           variants={variants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2  w-full gap-4">
+          className="grid grid-cols-2 w-full gap-4"
+        >
           {data?.data?.categories?.slice(0, 5).map((item, index) => (
-            <Link to={`/categories/${item.id}`}
-              className={`bg-white rounded-[40px] relative p-5 ${index == 1 && "row-span-2 flex flex-col justify-end"}`} key={index}>
-              <div className="absolute top-5 end-5 ">
-                <GoArrowUpLeft className="text-main size-6" />
+            <Link
+              to={`/categories/${item.id}`}
+              className={`rounded-[40px] relative p-5 min-h-34 flex flex-col justify-end overflow-hidden ${index == 1 && "row-span-2"
+                }`}
+              key={index}
+              style={{
+                backgroundImage: `url(${item.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              {/* التدرج الأسود */}
+              <div className="absolute bottom-0 left-0 w-full h-[100%] bg-gradient-to-t from-black/80 via-black/50 to-transparent z-0" />
+
+              {/* السهم */}
+              <div className="absolute top-5 end-5 z-10">
+                <GoArrowUpLeft className="text-white font-extrabold size-6" />
               </div>
-              <div className="rounded-full flex items-center justify-center size-12 relative shadow-[inset_0_2px_8px_rgba(0,0,0,0.2)]">
-                <Image src={item.image} alt="img1" className="rounded-full" />
-              </div>
-              <div className="mt-2 pt-4 space-y-2">
-                <h2 className="text-xs font-bold text-[#878787]">Ice Cream</h2>
-                <h2 className="text-sm font-extrabold  text-nowrap">{item.name}</h2>
+
+              {/* النص */}
+              <div className="mt-2 pt-4 space-y-2 z-10 relative">
+                <h2 className="text-sm font-extrabold text-white whitespace-nowrap">
+                  {item.name}
+                </h2>
               </div>
             </Link>
           ))}
         </motion.div>
+
       </div>
 
       <div className="lg:hidden custom-container  max-md:space-y-3 block  w-full pb-7">
@@ -122,19 +137,16 @@ const Home = () => {
       {data?.data &&
         <div className="max-lg:hidden ">
           <div className="space-y-10 pt-10 xl:space-y-20 xl:pt-10">
-
             <div className="custom-container ">
               <DesctopProductsSection data={data?.data} />
             </div>
-         
-
-            <div className="w-full  bg-white ">
+            <div className="w-full  bg-white rounded-4xl ">
               <HomeDesctopCategories data={data.data} />
             </div>
-            <div className="custom-container">
+            <div className="custom-container" >
               <Testimonials />
             </div>
-            <div className="">
+            <div className="" >
               <MapSection />
             </div>
           </div>

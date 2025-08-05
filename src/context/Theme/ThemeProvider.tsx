@@ -5,13 +5,14 @@ import { ThemeContext } from "./ThemeContext";
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [isDark, setIsDark] = useState(true);
-  const isMobile = typeof window !== "undefined" && /Mobi|Android/i.test(navigator.userAgent);
+  const isMobileOrTablet =
+    typeof window !== "undefined" && window.innerWidth <= 1024;
 
   useEffect(() => {
-    if (isMobile) setIsDark(false);
-  },[isMobile])
+    if (isMobileOrTablet) setIsDark(false);
+  }, [isMobileOrTablet])
   const toggleTheme = () => {
-    if (isMobile) return;
+    if (isMobileOrTablet) return;
     setIsDark((prev) => !prev);
   };
   return (

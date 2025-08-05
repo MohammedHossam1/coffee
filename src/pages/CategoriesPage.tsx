@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,54 +13,86 @@ import CategoryDetails from "./CategoryDetails";
 import { useParams } from "react-router-dom";
 import CurvedCarousel from "../Components/CircularGallery";
 import Loader from "../Components/shared/Loader";
-import type { ApiResponse, IProduct } from "../interfaces";
+import type { ApiResponse, Category, IProduct } from "../interfaces";
+
 const CategoriesPage = () => {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
-  const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
-  const [activeTab, setActiveTab] = useState(Number(id) || data?.data?.categories[0]?.id || 1);
-  const filteredProducts = data?.data?.products.filter((product) => product.category?.id === activeTab) ?? [];
+  const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" });
+
+  const [sortedCategories, setSortedCategories] = useState<Category[]>([]);
+  const [activeTab, setActiveTab] = useState<number>(() => Number(id) || 1);
+
+  const filteredProducts = data?.data?.products.filter(
+    (product) => product.category?.id === activeTab
+  ) ?? [];
+
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
+  // ✅ بعد تحميل البيانات، نعيد ترتيب الـ categories مرة واحدة
+  useEffect(() => {
+    if (!data?.data?.categories) return;
 
-  if (isLoading) return <div>
-    <Loader />
-  </div>
+    const categories = [...data.data.categories];
+    const paramId = Number(id);
+
+    if (paramId) {
+      const index = categories.findIndex((c) => c.id === paramId);
+      if (index !== -1) {
+        const [matchedCategory] = categories.splice(index, 1);
+        categories.splice(2, 0, matchedCategory); // ضيفه في index 2 (المكان الثالث)
+      }
+    }
+
+    setSortedCategories(categories);
+  }, [data, id]);
+
+  if (isLoading) return <Loader />;
 
   return (
-    <div className="flex flex-col  justifdy-between gap-14 xxs:gap-26 h-full !overflow-hidden">
-      {/* top slider */}
+    <div className="flex flex-col gap-12 xxs:gap-16 h-full max-xs:!overflow-hidden">
       <div className="custom-container w-full pt-2">
         <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
-      <div className=" h-full flex flex-col"
+      <div
+        className="h-full flex flex-col"
         style={{
-          background: `url(${topBg}) top / cover no-repeat`
+          background: `url(${topBg}) top / cover no-repeat`,
         }}
       >
-        <div className="top-slider relative z-2 ">
-          {/* <CurvedSwiper activeTab={activeTab} setActiveTab={setActiveTab} data={data?.data?.categories || []} /> */}
-          <CurvedCarousel items={data?.data?.categories || []} activeTab={activeTab} setActiveTab={setActiveTab} />
+        <div className="top-slider relative z-">
+          {/* ✅ استخدم الـ sortedCategories بدل data.data.categories */}
+          <CurvedCarousel
+            items={sortedCategories}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            initialIndex={2}
+
+          />
         </div>
 
-        <div onClick={() => setOpen(filteredProducts.length > 0 ? true : false)} className=" carousel-container relative z-2 h-full grid grid-cols-1 items-center "
+        <div
+          onClick={() => setOpen(filteredProducts.length > 0)}
+          className="carousel-container relative z-2 h-full grid grid-cols-1 items-center"
           style={{
-            background: `url(${botBg}) top / cover no-repeat`
+            background: `url(${botBg}) top / cover no-repeat`,
           }}
         >
-          <div className="">
-            <DisplayProduct products={filteredProducts || []} details={false} onSelectProduct={setSelectedProduct} />
-          </div>
+          <DisplayProduct
+            products={filteredProducts || []}
+            details={false}
+            onSelectProduct={setSelectedProduct}
+          />
         </div>
-        {filteredProducts?.length > 0 && selectedProduct && <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
-          <CategoryDetails selectedProduct={selectedProduct} />
-        </BottomSheet>}
-      </div>
 
-    </div >
+        {filteredProducts.length > 0 && selectedProduct && (
+          <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
+            <CategoryDetails selectedProduct={selectedProduct} />
+          </BottomSheet>
+        )}
+      </div>
+    </div>
   );
 };
 
 export default CategoriesPage;
-
-
