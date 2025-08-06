@@ -17,7 +17,6 @@ const HomeDesktopCategories = ({ data }: Props) => {
 
   const [activeCategoryId, setActiveCategoryId] = useState<number>(categories[0]?.id);
   const activeCategory = categories.find((cat) => cat?.id === activeCategoryId);
-  console.log(activeCategory, "activeCategory");
   const filteredProducts = products.filter(
     (product) => product.category?.id === activeCategoryId
   );

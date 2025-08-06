@@ -4,7 +4,6 @@ import type { IProduct } from "../interfaces";
 
 
 const CategoryDetails = ({ selectedProduct }: { selectedProduct: IProduct }) => {
-console.log(selectedProduct,"selectedProduct")
   return (
     <div className="pb-3 space-y-5">
       

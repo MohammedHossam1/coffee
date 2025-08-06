@@ -26,13 +26,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
         setStartX(e.clientX);
         setDragOffset(0);
     };
-    // useEffect(() => {
-    //     const currentItem = items[currentIndex];
-    //     if (currentItem) {
-    //         setActiveTab(currentItem.id);
-    //     }
-    // }, [currentIndex, items]);
-    console.log(items, "items");
+ 
 
 
     const handleMouseMove = (e: React.MouseEvent) => {

@@ -12,6 +12,19 @@ const Navbar = () => {
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
 
+
+
+
+
+
+
+
+
+
+
+
+
+  
   const navigate = useNavigate();
   const getCircleSize = () => {
     const vw = window.innerWidth;
