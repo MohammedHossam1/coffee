@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import mug from "/src/assets/mug.svg";
 import { type Size, type IProduct } from "../interfaces";
 import Image from "./shared/Image";
@@ -20,7 +20,9 @@ const getImageSize = (label: string) => {
 
 const PriceTabs = ({ data }: { data: IProduct }) => {
   const [selectedSize, setSelectedSize] = useState<Size | null>(data?.sizes[0]);
-
+  useEffect(() => {
+    setSelectedSize(data?.sizes[0] || null)
+  }, [data])
   return (
     <div className="w-full max-w-sm mx-auto">
       {/* التبويبات */}
@@ -54,7 +56,7 @@ const PriceTabs = ({ data }: { data: IProduct }) => {
 
       {/* السعر */}
       <div className="text-center mx-auto w-fit text-xl font-extrabold text-black p-3 px-6 rounded-full bg-main">
-        {selectedSize?.price} <span className="text-[9px]">ILS</span>
+        {selectedSize?.price || data?.price} <span className="text-[9px]">ILS</span>
       </div>
     </div>
   );

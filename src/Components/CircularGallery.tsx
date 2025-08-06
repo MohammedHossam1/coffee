@@ -190,7 +190,7 @@ const CurvedCarousel: React.FC<CurvedCarouselProps> = ({ items, activeTab, setAc
                                                 <Image
                                                     src={item.image}
                                                     alt={item.name}
-                                                    className={`size-14 xxs:size-16 rounded-full object-cover border-2 border-white shadow-md ${isActive ? ' outline-2 outline-offset-2 outline-black' : ''}`}
+                                                    className={`size-14 xxs:size-16  xs:size-20 rounded-full object-cover border-2 border-white shadow-md ${isActive ? ' outline-2 outline-offset-2 outline-black' : ''}`}
                                                     draggable={false}
                                                 />
                                                 {/* عنوان صغير */}

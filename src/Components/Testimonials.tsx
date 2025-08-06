@@ -8,34 +8,33 @@ import Image from "./shared/Image";
 import SectionHeader from "./shared/SectionHeader";
 import imgQuote from "/src/assets/home/quote.svg";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import type { SuccessStories } from "../interfaces";
 
-const TestimonialCard = () => {
+const TestimonialCard = ({ data }: { data: SuccessStories }) => {
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center flex-col gap-1">
-                    <h4 className="text-sm font-extrabold">عبدالله. م</h4>
-                    <h4 className="text-sm text-[#4D4D4D]">الرياض</h4>
+                    <h4 className="text-sm font-extrabold">{data.owner_name}</h4>
+                    {/* <h4 className="text-sm text-[#4D4D4D]">{data.owner_title}</h4> */}
                 </div>
                 <div className="flex items-center gap-2">
                     <FaStar className="size-3" />
-                    <span>4.5</span>
+                    <span>{data.rate}</span>
                 </div>
             </div>
             <div className="space-y-2">
                 <h2 className="text-xl xl:text-3xl font-bold xl:leading-[50px] text-[#CFBDA8]">
-                    ‘’ من أروع تجاربي! القهوة طازجة والمذاق متوازن بشكل مثالي! ‘’
+                    ‘’ {data.description} ‘’
                 </h2>
-                <p className="text-base xl:text-lg font-semibold my-2 xl:my-5 text-[#4D4D4D]">
-                    المكان مريح والخدمة راقية. بالتأكيد سأعود مرة أخرى!
-                </p>
+           
             </div>
         </div>
     );
 };
 
-const Testimonials = () => {
-    
+const Testimonials = ({ data }: { data: SuccessStories[] }) => {
+
 
     return (
         <div>
@@ -70,9 +69,9 @@ const Testimonials = () => {
                             swiper.navigation.update();
                         }}
                     >
-                        {Array.from({ length: 10 }).map((_, index) => (
+                        {data.map((item, index) => (
                             <SwiperSlide key={index}>
-                                <TestimonialCard />
+                                <TestimonialCard data={item} />
                             </SwiperSlide>
                         ))}
                     </Swiper>
@@ -88,7 +87,7 @@ const Testimonials = () => {
                         <button
                             className="size-8 custom-next rounded-full bg-main text-white dark:bg-white dark:text-black flex items-center justify-center shadow-lg hover:scale-110 transition"
                         >
-                            <FaArrowLeftLong  size={15} />
+                            <FaArrowLeftLong size={15} />
 
                         </button>
                     </div>

@@ -25,7 +25,6 @@ export const breakpoints = {
     },
 }
 export const navLinks = [
-    { label: "الرئيسيه", path: "/" },
-    { label: "المــنتجـــات", path: "/" },
-    { label: "إتصل بـــنا", path: "/" },
-  ];
+    { label: "المــنتجـــات", path: "/products" },
+    { label: "إتصل بـــنا", path: "https://wa.me/201234567890" }, // ← رقمك بعد مفتاح الدولة بدون "+" مثلاً 20 لمصر
+];

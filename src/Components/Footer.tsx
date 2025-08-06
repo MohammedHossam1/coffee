@@ -16,7 +16,7 @@ const Footer = () => {
                     <div className="">
                         <div className="ms-auto">
                             <Link to="/">
-                                <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily doze</h1>
+                                <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily dose</h1>
                             </Link>
                         </div>
                     </div>

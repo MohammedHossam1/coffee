@@ -29,7 +29,6 @@ const CategoriesPage = () => {
 
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
-  // ✅ بعد تحميل البيانات، نعيد ترتيب الـ categories مرة واحدة
   useEffect(() => {
     if (!data?.data?.categories) return;
 
@@ -40,7 +39,7 @@ const CategoriesPage = () => {
       const index = categories.findIndex((c) => c.id === paramId);
       if (index !== -1) {
         const [matchedCategory] = categories.splice(index, 1);
-        categories.splice(2, 0, matchedCategory); // ضيفه في index 2 (المكان الثالث)
+        categories.splice(2, 0, matchedCategory); 
       }
     }
 
@@ -61,7 +60,6 @@ const CategoriesPage = () => {
         }}
       >
         <div className="top-slider relative z-">
-          {/* ✅ استخدم الـ sortedCategories بدل data.data.categories */}
           <CurvedCarousel
             items={sortedCategories}
             activeTab={activeTab}

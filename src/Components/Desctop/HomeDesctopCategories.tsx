@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import type { ApiData } from "../../interfaces";
-import SectionHeader from "../shared/SectionHeader";
 import Image from "../shared/Image";
 import currencyIC from "/src/assets/currency.svg";
 
@@ -16,23 +15,22 @@ const HomeDesktopCategories = ({ data }: Props) => {
   );
 
   const [activeCategoryId, setActiveCategoryId] = useState<number>(categories[0]?.id);
-  const activeCategory = categories.find((cat) => cat?.id === activeCategoryId);
   const filteredProducts = products.filter(
     (product) => product.category?.id === activeCategoryId
   );
 
   return (
-    <div className=" custom-container pb-6">
-      <SectionHeader reverse title={activeCategory?.name || ""} description={"نقدّم لك مجموعة مشروبات شهية."} />
+    <div className=" pb-6">
+      <h1 className='text-xl text-center text-black py-10 xl:text-4xl font-bold '>{"نقدّم لك مجموعة مشروبات شهية."}</h1>
 
       {/* Tabs */}
-      <div className="flex gap-4 border-b mb-6">
+      <div className="flex gap-4  mb-6">
         {categories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveCategoryId(cat.id)}
-            className={`pb-2 px-4 text-sm overflow-auto font-medium transition duration-200 border-b-2 ${cat.id === activeCategoryId
-              ? "border-black text-black"
+            className={`pb-2 px-4 text-xl overflow-auto   cursor-pointer transition duration-200 border-b-2 ${cat.id === activeCategoryId
+              ? "border-black text-black font-bold "
               : "border-transparent text-gray-500 hover:text-black"
               }`}
           >
@@ -42,7 +40,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
       </div>
 
       {/* Products */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-50x">
         {filteredProducts.length > 0 && filteredProducts.map((product, ind) => (
           <motion.div
             key={product.id}
@@ -62,7 +60,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
 
             {/* Info */}
             <div className="w-3/4 p-2 flex flex-col gap-2">
-              <h3 className="text-xs font-bold text-[#999999]">{product.name.en}</h3>
+              <h3 className="text-base font-bold text-[#999999]">{product.name.en}</h3>
               <div className="flex gap-2 items-center">
                 <h3 className="text-sm xl:text-xl font-semibold text-black">{product.name.ar} ............ </h3>
                 <div className="flex gap-2 items-center">

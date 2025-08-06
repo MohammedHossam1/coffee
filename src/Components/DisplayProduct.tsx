@@ -29,7 +29,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
     }
   }, [products]);
 
-
+// useEffect(()=>{},[])
 
   if (products.length === 0) return <h2 className="text-2xl font-bold text-center py-10">لا يوجد منتجات</h2>
   return (
@@ -118,7 +118,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
 
               ))}
 
-              {!details && <div ref={paginationRef} className="flex justify-center gap-2"></div>}
+              {!details && <div ref={paginationRef} className="flex justify-center gap-2 pt-3"></div>}
             </Swiper>
           </motion.div>
         </div>

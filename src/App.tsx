@@ -4,6 +4,7 @@ import { Suspense, lazy } from "react";
 import MainLayout from "./layout/MainLayout";
 import NotFound from "./pages/NotFound";
 import Loader from "./Components/shared/Loader";
+import Products from "./pages/Products";
 
 // Lazy loaded pages
 const Home = lazy(() => import("./pages/Home"));
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="categories/:id" element={<CategoriesPage />} />
+          <Route path="products" element={<Products />} />
           <Route path="product/:id" element={<ProductDetails />} />
           <Route path="*" element={<NotFound />} />
         </Route>

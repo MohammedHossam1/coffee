@@ -5,20 +5,17 @@ import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
 import HomeDesctopCategories from "../Components/Desctop/HomeDesctopCategories";
 import DesctopProductsSection from "../Components/DesctopHome";
 import Footer from "../Components/Footer";
 import HomeMainCarousel from "../Components/HomeMainCarousel";
-import MapSection from "../Components/MapSection";
 import Social from "../Components/Social";
 import Testimonials from "../Components/Testimonials";
-import Image from "../Components/shared/Image";
 import Loader from "../Components/shared/Loader";
-import playIC from "../assets/home/play.svg";
-import slide1 from "../assets/home/slide1.png";
 import useGetData from "../hooks/useGetData";
 import type { ApiResponse } from "../interfaces";
+
+import VideosCarousel from "../Components/VideosCarousel";
 const variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { transition: { straggerChildren: 0.1 }, opacity: 1, y: 0 },
@@ -33,6 +30,7 @@ const MobileSectionHeader = ({ title, icon }: { title: string, icon?: boolean })
 }
 const Home = () => {
   const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" })
+
   if (isLoading) return <div>
     <Loader />
   </div>
@@ -40,7 +38,7 @@ const Home = () => {
   return (
     <div className="flex flex-col max-md:justify-between  w-full max-md:gap-3 h-full">
       {/* top slider */}
-      <div className="w-full pt-2 max-lg:custom-container ">
+      <div className="w-full pt-2 max-lg:custom-container lg:p-10 ">
         <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
       {/* Mobile */}
@@ -68,12 +66,12 @@ const Home = () => {
               <div className="absolute bottom-0 left-0 w-full h-[100%] bg-gradient-to-t from-black/80 via-black/50 to-transparent z-0" />
 
               {/* السهم */}
-              <div className="absolute top-5 end-5 z-10">
+              <div className="absolute top-5 end-5 z-0">
                 <GoArrowUpLeft className="text-white font-extrabold size-6" />
               </div>
 
               {/* النص */}
-              <div className="mt-2 pt-4 space-y-2 z-10 relative">
+              <div className="mt-2 pt-4 space-y-2 z-0 relative">
                 <h2 className="text-sm font-extrabold text-white whitespace-nowrap">
                   {item.name}
                 </h2>
@@ -85,49 +83,9 @@ const Home = () => {
       </div>
 
       <div className="lg:hidden custom-container  max-md:space-y-3 block  w-full pb-7">
-
         {/* vedios */}
         <MobileSectionHeader title={"نـــــــاس كــانو مثلك "} />
-        <div className="">
-          <Swiper
-            slidesPerView={2.2}
-            spaceBetween={10}
-            breakpoints={{
-              640: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-              },
-              1024: {
-                slidesPerView: 5,
-                spaceBetween: 50,
-              },
-            }}
-            className="mySwiper"
-          >
-            {Array.from({ length: 5 }).map((_, index) => (
-              <SwiperSlide key={index}>
-                <motion.div
-                  initial={{ scale: 0.8 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  className="rounded-[40px] ">
-                  <div className="absolute inset-0 bg-black-10 flex items-center justify-center">
-                    <Image src={playIC} alt="img1" className=" size-10" />
-                  </div>
-                  <Image src={slide1} alt="img1" className="h-full w-full" />
-                </motion.div>
-              </SwiperSlide>
-
-            ))}
-          </Swiper>
-        </div>
-
+        <VideosCarousel data={data?.data?.videos || []} />
         {/* social */}
         <MobileSectionHeader title={"تـــــــابعنا "} />
         <Social />
@@ -136,18 +94,17 @@ const Home = () => {
       {/* Desctop  */}
       {data?.data &&
         <div className="max-lg:hidden ">
-          <div className="space-y-10 pt-10 xl:space-y-20 xl:pt-10">
+          <div className="space-y-10 pt-10 xl:space-y-10 xl:pt-10">
+            <div className="px-10">
+              <div id="categories" className="bg-white rounded-4xl px-5 ">
+                <HomeDesctopCategories  data={data.data} />
+              </div>
+            </div>
             <div className="custom-container ">
-              <DesctopProductsSection data={data?.data} />
+              <DesctopProductsSection title={"إستكشـــف أحدث منتجـــاتنا"} data={data?.data?.products} />
             </div>
-            <div className="w-full  bg-white rounded-4xl ">
-              <HomeDesctopCategories data={data.data} />
-            </div>
-            <div className="custom-container" >
-              <Testimonials />
-            </div>
-            <div className="" >
-              <MapSection />
+            <div className="custom-container pb-15" >
+              <Testimonials data={data?.data?.sucess_stories || []} />
             </div>
           </div>
           <div className="max-lg:hidden">

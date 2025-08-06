@@ -2,15 +2,18 @@ import type { HTMLAttributes } from "react";
 import Image from "./shared/Image";
 import type { IProduct } from "../interfaces";
 import currencyIC from "/src/assets/currency.svg";
+import { motion } from "framer-motion";
 interface ProductCardProps extends HTMLAttributes<HTMLDivElement> {
     item: IProduct;
+    key?: number
 }
 
-const ProductCard = ({ item, ...props }: ProductCardProps) => {
+const ProductCard = ({ item, key }: ProductCardProps) => {
     return (
-        <div
+        <motion.div
+            key={key}
+            whileTap={{ scale: 1.05 }}
             className="flex flex-col gap-2  rounded-3xl "
-            {...props}
         >
             <div className="rounded-3xl overflow-hidden h-70 xl:h-72 w-full bg-white">
                 <Image src={item?.image} alt={item?.name?.ar || "img"} className="w-full h-full object-contain p-5" />
@@ -26,7 +29,7 @@ const ProductCard = ({ item, ...props }: ProductCardProps) => {
                     <Image src={currencyIC} alt={item?.name?.ar || "img"} className="size-3 object-cover" />
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
