@@ -42,7 +42,7 @@ const Testimonials = ({ data }: { data: SuccessStories[] }) => {
                 title="ماذا يقول عملاؤنا عنا !."
                 description="آراء عملائنا هي انعكاس حقيقي لجودة خدماتنا."
             />
-            <div className="border rounded-3xl grid grid-cols-12 gap-10 p-10 relative">
+            <div className="border border-main rounded-3xl grid grid-cols-12 gap-10 p-10 relative">
                 <div className="col-span-12 lg:col-span-5">
                     <div className="flex items-center justify-between">
                         <h2 className="text-xl font-bold">قصص عملائنا</h2>

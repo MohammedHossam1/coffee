@@ -57,7 +57,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
               {products.map((item, i) => (
                 <SwiperSlide
                   key={item.id}
-                  className="rounded-2xl overflow-hidden relative"
+                  className="rounded-2xl overflow-hsidden relative"
                   onClick={() => onSelectProduct && onSelectProduct(item)}
                 >
                   <div className="size-34 xxs:size-38 md:size-50 bg-[#FFFFFF1A] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>

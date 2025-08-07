@@ -41,7 +41,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
 
       {/* Products */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 min-h-50x">
-        {filteredProducts.length > 0 && filteredProducts.map((product, ind) => (
+        {filteredProducts.length > 0 && filteredProducts.slice(0, 6).map((product, ind) => (
           <motion.div
             key={product.id}
             className="flex bg-white  rounded-lg  items-center w-full overflow-hidden"
