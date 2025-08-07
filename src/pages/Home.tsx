@@ -35,7 +35,7 @@ const Home = () => {
   </div>
 
   return (
-    <div className="flex flex-col max-md:justify-between  w-full max-md:gap-3 h-full ">
+    <div className="flex flex-col max-md:justify-between  w-full max-md:gap-3 min-h-[calc(100dvh-124px)] ">
       {/* top slider */}
       <div className="w-full pt-2 max-lg:custom-container lg:p-10 ">
         <HomeMainCarousel data={data?.data?.sliders || []} />

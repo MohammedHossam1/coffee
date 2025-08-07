@@ -47,25 +47,13 @@ const CategoriesPage = () => {
   if (isLoading) return <Loader />;
 
   return (
-    <div className="flex flex-col gap-12 xxs:gap-16 h-full max-xs:!overflow-hidden md:!h-full" >
+    <div className="flex flex-col gap-5 xxs:gap-16 max-xs:!overflow-hidden  h-[calc(100dvh-64px)]" >
       <div className="custom-container w-full pt-2">
         <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
       <div
         className="h-full flex flex-col bg-[#faf1d0]"
-        // style={{
-        //   background: `url(${topBg}) top / cover no-repeat`,
-        // }}
       >
-        {/* <div className="top-slider relative z-">
-          <CurvedCarousel
-            items={sortedCategories}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            initialIndex={2}
-
-          />
-        </div> */}
         <div className="">
           <MobileCategories items={sortedCategories}
             activeTab={activeTab}

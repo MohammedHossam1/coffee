@@ -13,7 +13,7 @@ const MainLayout = () => {
         <ScrollToTopNavigation />
       <div className={`h-full dark:bg-black`}>
         <Navbar />
-        <main className="flex-grow  overflow-x-hidden text-black dark:bg-black dark:text-white">
+        <main className="flex-grow  overflow-x-hidden  text-black dark:bg-black dark:text-white">
           <Outlet />
         </main>
         <div className="max-lg:hiddden">
