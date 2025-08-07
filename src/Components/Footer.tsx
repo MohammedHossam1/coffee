@@ -51,7 +51,7 @@ const Footer = () => {
                 <div className="w-full flex items-center justify-between gap-2 py-5 border-[#D9D9D9] text-nowrap " >
                     <h4 className='text-sm font-bold'>جميع الحقوق محفوظة  - {new Date().getFullYear()}</h4>
                     <div className="col-span-12 xl:col-span-3  xl:self-end">
-                        <p className='text-xs font-bold uppercase sm:tracking-[.2rem]'>Created by   <a href="" className='text-main mx-2'>EL-QADI</a></p>
+                        <p className='text-xs  uppercase sm:tracking-[.2rem]'>Created by   <a href="" className='font-bold mx-2'>EL-QADI</a></p>
                     </div>
                 </div>
             </div>

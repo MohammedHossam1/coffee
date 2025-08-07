@@ -51,7 +51,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
           >
             {/* Image */}
             <div className="w-1/4 h-20 bg-white rounded-[30px]">
-              <img
+              <Image
                 src={product.image}
                 alt={product.name.en}
                 className="object-contain w-full h-full"
@@ -60,7 +60,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
 
             {/* Info */}
             <div className="w-3/4 p-2 flex flex-col gap-2">
-              <h3 className="text-base font-bold text-[#999999]">{product.name.en}</h3>
+              <h2 className="text-base font-bold text-[#999999]">{product.name.en}</h2>
               <div className="flex gap-2 items-center">
                 <h3 className="text-sm xl:text-xl font-semibold text-black">{product.name.ar} ............ </h3>
                 <div className="flex gap-2 items-center">

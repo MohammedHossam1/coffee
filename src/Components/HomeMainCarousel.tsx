@@ -47,8 +47,8 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
             key={i}
             onClick={() => handleBulletClick(i)}
             className={`transition-all duration-300 ${i === activeIndex
-              ? "bg-main dark:bg-black w-5 h-[5px] rounded-sm"
-              : "bg-white/20  dark:bg-black/60 size-[5px] rounded-full"
+              ? "bg-main dark:bg-black w-5 lg:w-7 h-[5px] lg:h-[7px] rounded-sm"
+              : "bg-white/20  dark:bg-black/60 size-[5px] lg:size-[7px] rounded-full"
               }`}
             aria-label={`Go to slide ${i + 1}`}
           />

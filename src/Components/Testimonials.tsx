@@ -26,7 +26,7 @@ const TestimonialCard = ({ data }: { data: SuccessStories }) => {
                 <h2 className="text-xl xl:text-3xl font-bold xl:leading-[50px] text-[#CFBDA8]">
                     ‘’ {data.description} ‘’
                 </h2>
-           
+
             </div>
         </div>
     );
@@ -77,12 +77,16 @@ const Testimonials = ({ data }: { data: SuccessStories[] }) => {
 
                     <div className="flex gap-1 mt-5 xl:mt-7 z-10">
                         <button
+                            aria-label="previous slide"
+                            title="previous slide"
                             className="size-8 custom-prev rounded-full bg-main text-white dark:bg-white dark:text-black flex items-center justify-center shadow-lg hover:scale-110 transition"
                         >
                             <FaArrowLeftLong className="rotate-180" size={15} />
 
                         </button>
                         <button
+                            aria-label="next slide"
+                            title="next slide"
                             className="size-8 custom-next rounded-full bg-main text-white dark:bg-white dark:text-black flex items-center justify-center shadow-lg hover:scale-110 transition"
                         >
                             <FaArrowLeftLong size={15} />

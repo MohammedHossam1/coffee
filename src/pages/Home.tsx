@@ -22,7 +22,7 @@ const variants = {
 const MobileSectionHeader = ({ title, icon }: { title: string, icon?: boolean }) => {
   return (
     <div className="flex gap-2 items-center my-4">
-      <h4 className="text-sm font-extrabold ">{title}:</h4>
+      <h2 className="text-sm font-extrabold ">{title}:</h2>
       {icon && <TbMenu3 />}
     </div>
   )
@@ -71,9 +71,9 @@ const Home = () => {
 
               {/* النص */}
               <div className="mt-2 pt-4 space-y-2 z-0 relative">
-                <h2 className="text-sm font-extrabold text-white whitespace-nowrap">
+                <h3 className="text-sm font-extrabold text-white whitespace-nowrap">
                   {item.name}
-                </h2>
+                </h3>
               </div>
             </Link>
           ))}
