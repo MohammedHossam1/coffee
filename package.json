@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.14",
-    "@react-google-maps/api": "^2.20.7",
-    "@splidejs/react-splide": "^0.7.12",
     "@tailwindcss/vite": "^4.1.11",
     "@tanstack/react-query": "^5.83.0",
     "axios": "^1.11.0",

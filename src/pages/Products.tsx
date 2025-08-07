@@ -1,7 +1,7 @@
 import Loader from "@/Components/shared/Loader"
 import useGetData from "@/hooks/useGetData"
 import type { IProduct } from "@/interfaces"
-import DesctopProductsSection from "../Components/DesctopHome"
+import DesctopProductsSection from "../Components/DesctopProductsSection"
 interface ApiResponse {
     success: boolean
     data: IProduct[]
@@ -16,12 +16,10 @@ const Products = () => {
     </div>
 
     return (
-        <>
-            <div className="custom-container lg:py-10">
-                {data && <DesctopProductsSection title={"كل المنتجات"} data={data?.data} />}
-            </div>
-       
-        </>
+        <div className="custom-container lg:py-5">
+            {data && <DesctopProductsSection title={"كل المنتجات"} data={data?.data} />}
+        </div>
+
     )
 }
 

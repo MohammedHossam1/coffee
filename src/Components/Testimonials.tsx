@@ -16,7 +16,6 @@ const TestimonialCard = ({ data }: { data: SuccessStories }) => {
             <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center flex-col gap-1">
                     <h4 className="text-sm font-extrabold">{data.owner_name}</h4>
-                    {/* <h4 className="text-sm text-[#4D4D4D]">{data.owner_title}</h4> */}
                 </div>
                 <div className="flex items-center gap-2">
                     <FaStar className="size-3" />
@@ -76,7 +75,6 @@ const Testimonials = ({ data }: { data: SuccessStories[] }) => {
                         ))}
                     </Swiper>
 
-                    {/* الأسهم */}
                     <div className="flex gap-1 mt-5 xl:mt-7 z-10">
                         <button
                             className="size-8 custom-prev rounded-full bg-main text-white dark:bg-white dark:text-black flex items-center justify-center shadow-lg hover:scale-110 transition"

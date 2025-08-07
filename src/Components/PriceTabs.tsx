@@ -25,7 +25,7 @@ const PriceTabs = ({ data }: { data: IProduct }) => {
   }, [data])
   return (
     <div className="w-full max-w-sm mx-auto">
-      {/* التبويبات */}
+      {/* tabs */}
       <div className="flex justify-center gap-2 rounded-full p-1 mb-2 xxs:mb-4">
         {data.sizes.map((size) => (
           <button
@@ -53,8 +53,7 @@ const PriceTabs = ({ data }: { data: IProduct }) => {
           </button>
         ))}
       </div>
-
-      {/* السعر */}
+      {/* price */}
       <div className="text-center mx-auto w-fit text-xl font-extrabold text-black p-3 px-6 rounded-full bg-main">
         {selectedSize?.price || data?.price} <span className="text-[9px]">ILS</span>
       </div>

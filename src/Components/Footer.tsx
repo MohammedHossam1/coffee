@@ -13,16 +13,16 @@ const Footer = () => {
             <div className="max-lg:hidden">
 
                 <div className="grid grid-cols-12     lg:py-10 ">
-                    <div className="col-span-12 xl:col-span-3  xl:self-end ">
+                    <div className="col-span-12 lg:col-span-3  lg:self-end ">
                         <Social reverse={true} />
                     </div>
-                    <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-center justify-center pb-10">
+                    <div className="col-span-12 lg:col-span-6 flex flex-col gap-4 items-center justify-center pb-10">
                         <Link to="/" className='w-40'>
                             <Image src={logo} alt="logo" className="!w-40" />
                         </Link>
                     </div>
 
-                    <div className="col-span-12 xl:col-span-3  flex items-center justify-end  xl:self-end  ">
+                    <div className="col-span-12 lg:col-span-3  flex items-center justify-end  lg:self-end  ">
                         <div className="space-x-3 ">
                             <Link to="/" className='text-xs font-bold'>سيــاسة الخصــوصية</Link>
                             <Link to="/" className='text-xs font-bold'>الشـــروط و الأحكــــام</Link>
@@ -47,12 +47,11 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-
             <div className="lg:hidden">
-                <div className="w-full flex items-center justify-between gap-2 py-5 border-[#D9D9D9] " >
+                <div className="w-full flex items-center justify-between gap-2 py-5 border-[#D9D9D9] text-nowrap " >
                     <h4 className='text-sm font-bold'>جميع الحقوق محفوظة  - {new Date().getFullYear()}</h4>
                     <div className="col-span-12 xl:col-span-3  xl:self-end">
-                        <p className='text-xs font-bold uppercase tracking-[.2rem]'>Created by   <a href="" className='text-main mx-2'>EL-QADI</a></p>
+                        <p className='text-xs font-bold uppercase sm:tracking-[.2rem]'>Created by   <a href="" className='text-main mx-2'>EL-QADI</a></p>
                     </div>
                 </div>
             </div>

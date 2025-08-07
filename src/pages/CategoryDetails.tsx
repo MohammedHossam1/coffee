@@ -6,10 +6,8 @@ import type { IProduct } from "../interfaces";
 const CategoryDetails = ({ selectedProduct }: { selectedProduct: IProduct }) => {
   return (
     <div className="pb-3 space-y-5">
-      
       <div className="">
         <div className="relative">
-
           <Image
             src={selectedProduct.image}
             alt={`Product `}

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import type { ApiData } from "../../interfaces";
-import Image from "../shared/Image";
+import type { ApiData } from "../interfaces";
+import Image from "./shared/Image";
 import currencyIC from "/src/assets/currency.svg";
 
 interface Props {

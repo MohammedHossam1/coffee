@@ -1,25 +1,46 @@
 import { navLinks } from '@/constant';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
 interface Props {
     column?: boolean
     onclick?: () => void
 }
+
 const NavLinks = ({ column, onclick }: Props) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/' && location.state?.scrollToCategories) {
+            const el = document.getElementById("categories");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, [location]);
+
+    const handleHomeClick = () => {
+        if (location.pathname === '/') {
+            const el = document.getElementById("categories");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        } else {
+            navigate('/', { state: { scrollToCategories: true } });
+        }
+    };
+
     return (
         <div onClick={onclick} className={`flex items-center gap-6 ${column && "flex-col justify-center"}`}>
             <div className="flex items-center gap-6">
                 <button
-                    onClick={() => {
-                        const el = document.getElementById("categories");
-                        if (el) {
-                            el.scrollIntoView({ behavior: "smooth" });
-                        }
-                    }}
+                    onClick={handleHomeClick}
                     className="hover:underline lg:text-sm transition-all duration-200 cursor-pointer bg-transparent border-none p-0"
                 >
                     الرئيسيه
                 </button>
-                {!column && <span  className="w-1 h-1 bg-black dark:bg-white rounded-full"></span>}
+                {!column && <span className="w-1 h-1 bg-black dark:bg-white rounded-full"></span>}
             </div>
             {
                 navLinks.map((link, index) => (
@@ -30,16 +51,14 @@ const NavLinks = ({ column, onclick }: Props) => {
                         >
                             {link.label}
                         </Link>
-                        {/* small dot between links */}
                         {!column && index !== navLinks.length - 1 && (
                             <span className="w-1 h-1 bg-black dark:bg-white rounded-full"></span>
                         )}
                     </div>
                 ))
             }
-
-        </div >
+        </div>
     )
 }
 
-export default NavLinks
+export default NavLinks;

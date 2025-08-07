@@ -35,7 +35,6 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
   }, [products]);
 
 
-  // useEffect(()=>{},[])
 
   if (products.length === 0) return <h2 className="text-2xl font-bold text-center py-10">لا يوجد منتجات</h2>
   return (
@@ -68,7 +67,6 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
                     className="w-full h-34 xxs:h-56 md:h-60 !object-contain rounded-2xl"
                   />
 
-                  {/* فقط المنتج النشط يظهر له التفاصيل */}
                   <AnimatePresence mode="wait">
                     <motion.div
                       layout

@@ -5,22 +5,20 @@ import MainLayout from "./layout/MainLayout";
 import NotFound from "./pages/NotFound";
 import Loader from "./Components/shared/Loader";
 import Products from "./pages/Products";
+import MobileOnlyWrapper from "./Components/shared/IsMobile";
 
 // Lazy loaded pages
 const Home = lazy(() => import("./pages/Home"));
-const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 const CategoriesPage = lazy(() => import("./pages/CategoriesPage"));
 
 const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        {/* Main Layout Wrapper */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="categories/:id" element={<CategoriesPage />} />
+          <Route path="categories/:id" element={<MobileOnlyWrapper><CategoriesPage /></MobileOnlyWrapper>} />
           <Route path="products" element={<Products />} />
-          <Route path="product/:id" element={<ProductDetails />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
