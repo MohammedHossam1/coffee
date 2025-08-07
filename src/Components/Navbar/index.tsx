@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Social from "../Social";
 import ThemeToggle from "../shared/ThemeToggle";
 import NavLinks from "./NavLinks";
+import Image from "../shared/Image";
+import logo from '../../assets/logo.jpg';
 
 
 const Navbar = () => {
@@ -62,8 +64,8 @@ const Navbar = () => {
         <nav className="hidden lg:flex flex-col gap-4 items-center">
           <div className="">
             <div className="ms-auto">
-              <Link to="/">
-                <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily dose</h1>
+              <Link to="/" className='!w-40'>
+                <Image src={logo} alt="logo" className="!w-40" />
               </Link>
 
             </div>
@@ -77,8 +79,8 @@ const Navbar = () => {
         </div>
         {/* Mobile Logo */}
         <div className="ms-auto lg:hidden">
-          <Link to="/">
-            <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily dose</h1>
+          <Link to="/" className='w-30'>
+            <Image src={logo} alt="logo"  className="!w-30" />
           </Link>
         </div>
       </div>
@@ -98,7 +100,7 @@ const Navbar = () => {
             transition={{ duration: 0.6, ease: "easeInOut" }}
             className="fixed bg-black/70 text-white top-0 right-0 left-0 bottom-0 z-50 flex flex-col items-center justify-center space-y-6 px-6 py-8 overflow-hidden"
           >
-            <NavLinks onclick={() => setIsOpen(false)}  column/>
+            <NavLinks onclick={() => setIsOpen(false)} column />
           </motion.div>
         )}
       </AnimatePresence>

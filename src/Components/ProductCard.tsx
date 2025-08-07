@@ -15,7 +15,7 @@ const ProductCard = ({ item, key }: ProductCardProps) => {
             whileTap={{ scale: 1.05 }}
             className="flex flex-col gap-2  rounded-3xl "
         >
-            <div className="rounded-3xl overflow-hidden h-70 xl:h-72 w-full bg-white">
+            <div className="rounded-3xl overflow-hidden h-40 lg:h-70 xl:h-72 w-full bg-white">
                 <Image src={item?.image} alt={item?.name?.ar || "img"} className="w-full h-full object-contain p-5" />
             </div>
             <div className="px-5 p-2 space-y-3">

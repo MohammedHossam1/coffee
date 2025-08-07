@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
-import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaTiktok } from "react-icons/fa";
 import map from "../assets/map.jpg";
 import Image from "./shared/Image";
 interface SocialItem {
@@ -21,12 +20,7 @@ const socialItems: SocialItem[] = [
     label: "Instagram",
   },
   {
-    Icon: FaXTwitter,
-    href: "https://twitter.com/YourHandle",
-    label: "Twitter",
-  },
-  {
-    Icon: FaYoutube,
+    Icon: FaTiktok,
     href: "https://youtube.com/YourChannel",
     label: "YouTube",
   }
@@ -56,26 +50,27 @@ const Social = ({ reverse }: { reverse?: boolean }) => {
             className={clsx(
               "cursor-pointer duration-300 rounded-full flex items-center justify-center size-9 sm:size-12 md:size-7",
               "bg-white text-black dark:bg-black dark:text-white hover:bg-main",
-              reverse && "!bg-white !text-black"
+              reverse && "!bg-white !text-black hover:!bg-main hover:!text-white"
             )}
           >
             <Icon className="size-5 sm:size-6 md:size-4" />
           </a>
         ))}
+        <a
+          href={"https://www.google.com/maps/place/Cairo"}
+          target="_blank"
+          title={"Location"}
+          rel="noopener noreferrer"
+          className={clsx(
+            "cursor-pointer duration-300 rounded-full flex items-center justify-center size-9 sm:size-12 md:size-7",
+            "bg-white text-black dark:bg-black dark:text-white hover:bg-main",
+            reverse && "!bg-white !text-black"
+          )}
+        >
+          <Image src={map} className="rounded-full hover:scale-105 duration-200 transition-all" />
+        </a>
       </div>
-      <a
-        href={"https://www.google.com/maps/place/Cairo"}
-        target="_blank"
-        title={"Location"}
-        rel="noopener noreferrer"
-        className={clsx(
-          "cursor-pointer duration-300 rounded-full flex items-center justify-center size-9 sm:size-12 md:size-7",
-          "bg-white text-black dark:bg-black dark:text-white hover:bg-main",
-          reverse && "!bg-white !text-black"
-        )}
-      >
-        <Image src={map} className="rounded-full hover:scale-105 duration-200 transition-all" />
-      </a>
+
     </div>
 
   );

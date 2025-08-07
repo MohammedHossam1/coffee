@@ -42,7 +42,7 @@ const VideosCarousel = ({ data }: { data: video[] }) => {
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 viewport={{ once: true, amount: 0.1 }}
-                                className="rounded-[40px] overflow-hidden relative aspect-video cursor-pointer group"
+                                className="rounded-[30px] overflow-hidden relative aspect-video cursor-pointer group"
                                 onClick={() => setActiveVideo(video)}
                             >
                                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 z-10 flex items-center justify-center transition">

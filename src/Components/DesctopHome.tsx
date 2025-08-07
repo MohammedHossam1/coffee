@@ -24,10 +24,10 @@ const getImageSize = (label: string) => {
 const DesctopProductsSection = ({ data, title }: { data: IProduct[], title: string }) => {
     const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null)
     const [selectedSize, setSelectedSize] = useState<Size | null>(selectedProduct?.sizes[0] || null);
-    const [itemsToShow, setItemsToShow] = useState(12); // مبدئياً نعرض 12 منتج
+    const [itemsToShow, setItemsToShow] = useState(12); 
     const handleShowMore = () => {
         if (isProductsPath) {
-            setItemsToShow((prev) => prev + 12); // نزيد 12 كل مرة
+            setItemsToShow((prev) => prev + 12); 
         }
     };
 
@@ -45,7 +45,7 @@ const DesctopProductsSection = ({ data, title }: { data: IProduct[], title: stri
                     icon={secIc}
                     title={title}
                     description={
-                        "نقدّم لك مجموعة مشروبات شهية تشمل إسبرسو كلاسيكي، وصفات خاصة بالمقهى، سموذي فواكه، وأصناف مثلجة لانتعاش فريد."
+                        "نقدّم لك مجموعة مشروبات شهية لانتعاش فريد."
                     }
                 />
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -57,7 +57,7 @@ const DesctopProductsSection = ({ data, title }: { data: IProduct[], title: stri
                         ))}
                 </div>
                 {data.length > shownData.length && (
-                    <div className="flex justify-center mt-5">
+                    <div className="flex justify-center my-5">
                         {isProductsPath ? (
                             <button
                                 onClick={handleShowMore}

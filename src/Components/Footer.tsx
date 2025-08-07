@@ -1,56 +1,61 @@
-import { Link } from 'react-router-dom'
-import { navLinks } from '../constant'
-import Social from './Social'
-import { BiMailSend } from "react-icons/bi";
-import { PiPhoneCall } from "react-icons/pi";
+import { Link, useLocation } from 'react-router-dom';
+import Social from './Social';
+import ScrollToTopButton from './shared/ScrollToTop';
+import Image from './shared/Image';
+import logo from '../assets/logo.jpg';
 
 const Footer = () => {
-    return (
-        <div className='custom-container py-10 bg-white  dark:text-black' onClick={(e) => console.log(e)}>
-            <div className="grid grid-cols-12 justify-items-center gap-5 py-10">
+    const { pathname } = useLocation();
+    if (pathname.includes('/categories')) return null;
 
-                <div className="col-span-12 xl:col-span-3 xl:self-end">
-                    <Social reverse={true} />
-                </div>
-                <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-center xl:pb-20">
-                    <div className="">
-                        <div className="ms-auto">
-                            <Link to="/">
-                                <h1 className="text-base lg:text-sm  font-medium tracking-[.4rem] uppercase before-dot">Daily dose</h1>
-                            </Link>
+    return (
+        <div className='custom-container lg:py-10 bg-white  dark:text-black' >
+            <div className="max-lg:hidden">
+
+                <div className="grid grid-cols-12     lg:py-10 ">
+                    <div className="col-span-12 xl:col-span-3  xl:self-end ">
+                        <Social reverse={true} />
+                    </div>
+                    <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-center justify-center pb-10">
+                        <Link to="/" className='w-40'>
+                            <Image src={logo} alt="logo" className="!w-40" />
+                        </Link>
+                    </div>
+
+                    <div className="col-span-12 xl:col-span-3  flex items-center justify-end  xl:self-end  ">
+                        <div className="space-x-3 ">
+                            <Link to="/" className='text-xs font-bold'>سيــاسة الخصــوصية</Link>
+                            <Link to="/" className='text-xs font-bold'>الشـــروط و الأحكــــام</Link>
                         </div>
                     </div>
-                    <div className="flex items-center gap-6">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.label}
-                                to={link.path}
-                                className="hover:underline lg:text-sm  transition-all duration-200"
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
+                </div>
+
+                {/* Separator */}
+                <div className="relative">
+                    <div className="w-full h-[1px] bg-[#D9D9D9]"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <ScrollToTopButton />
                     </div>
                 </div>
-                <div className="col-span-12 xl:col-span-3 flex gap-2 items-center xl:self-end xl:justify-end">
-                    <div className="flex items-center  text-sm font-semibold gap-2">
-                        <h2> Daily.Doze@Contact.com</h2>
-                        <BiMailSend />
+
+                {/* bottom */}
+                <div className="w-full flex items-center justify-between gap-2 pt-5 border-[#D9D9D9] " >
+                    <h4 className='text-sm font-bold'>جميع الحقوق محفوظة  - {new Date().getFullYear()}</h4>
+
+                    <div className="col-span-12 xl:col-span-3  xl:self-end">
+                        <p className='text-xs font-bold uppercase tracking-[.2rem]'>Created by   <a href="" className='text-main mx-2'>EL-QADI</a></p>
                     </div>
-                    <div className="flex items-center  text-sm font-semibold gap-2">
-                        <h2> Contact</h2>
-                        <PiPhoneCall />
-                    </div>
-                </div>
-            </div>
-            <div className="w-full flex items-center justify-between gap-2 border-t pt-5 border-[#D9D9D9]">
-                <h4 className='text-sm font-bold'>جميع الحقوق محفوظة  - 2025</h4>
-                <div className="space-x-3">
-                    <Link to="/" className='text-xs font-bold'>سيــاسة الخصــوصية</Link>
-                    <Link to="/" className='text-xs font-bold'>الشـــروط و الأحكــــام</Link>
                 </div>
             </div>
 
+            <div className="lg:hidden">
+                <div className="w-full flex items-center justify-between gap-2 py-5 border-[#D9D9D9] " >
+                    <h4 className='text-sm font-bold'>جميع الحقوق محفوظة  - {new Date().getFullYear()}</h4>
+                    <div className="col-span-12 xl:col-span-3  xl:self-end">
+                        <p className='text-xs font-bold uppercase tracking-[.2rem]'>Created by   <a href="" className='text-main mx-2'>EL-QADI</a></p>
+                    </div>
+                </div>
+            </div>
         </div >
     )
 }

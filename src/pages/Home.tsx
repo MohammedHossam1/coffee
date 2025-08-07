@@ -7,7 +7,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import HomeDesctopCategories from "../Components/Desctop/HomeDesctopCategories";
 import DesctopProductsSection from "../Components/DesctopHome";
-import Footer from "../Components/Footer";
 import HomeMainCarousel from "../Components/HomeMainCarousel";
 import Social from "../Components/Social";
 import Testimonials from "../Components/Testimonials";
@@ -107,9 +106,7 @@ const Home = () => {
               <Testimonials data={data?.data?.sucess_stories || []} />
             </div>
           </div>
-          <div className="max-lg:hidden">
-            <Footer />
-          </div>
+     
         </div>}
     </div >
   );
