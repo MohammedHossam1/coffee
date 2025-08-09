@@ -1,15 +1,21 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import type { ApiData } from "../interfaces";
+import { useEffect, useState } from "react";
+import type { ApiData, IProduct, Size } from "../interfaces";
 import Image from "./shared/Image";
 import currencyIC from "/src/assets/currency.svg";
+import ProductSheet from "./ProductSheet";
 
 interface Props {
-  data: ApiData ;
+  data: ApiData;
 }
 
 const HomeDesktopCategories = ({ data }: Props) => {
+  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null)
+  const [selectedSize, setSelectedSize] = useState<Size | null>(selectedProduct?.sizes[0] || null);
   const { products } = data;
+  useEffect(() => {
+      setSelectedSize(selectedProduct?.sizes[0] || null)
+  }, [selectedProduct])
   const categories = data.categories.filter(cat =>
     products.some(product => product.category?.id === cat.id)
   );
@@ -18,7 +24,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
   const filteredProducts = products.filter(
     (product) => product.category?.id === activeCategoryId
   );
-
+  
   return (
     <div className=" pb-6">
       <h1 className='text-xl text-center text-black py-10 xl:text-4xl font-bold '>{"نقدّم لك مجموعة مشروبات شهية."}</h1>
@@ -44,10 +50,12 @@ const HomeDesktopCategories = ({ data }: Props) => {
         {filteredProducts.length > 0 && filteredProducts.slice(0, 6).map((product, ind) => (
           <motion.div
             key={product.id}
-            className="flex bg-white  rounded-lg  items-center w-full overflow-hidden"
+            className="flex bg-white cursor-pointer rounded-lg  items-center w-full overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            whileTap={{ scale: 0.85 }}
             transition={{ duration: 0.4, delay: 0.2 * ind }}
+            onClick={() => setSelectedProduct(product)}
           >
             {/* Image */}
             <div className="w-1/4 h-20 bg-white rounded-[30px]">
@@ -72,6 +80,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
           </motion.div>
         ))}
       </div>
+      <ProductSheet selectedProduct={selectedProduct} setSelectedProduct={setSelectedProduct} selectedSize={selectedSize} setSelectedSize={setSelectedSize} />
     </div>
   );
 };
