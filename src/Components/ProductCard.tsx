@@ -1,8 +1,8 @@
-import type { HTMLAttributes } from "react";
-import Image from "./shared/Image";
-import type { IProduct } from "../interfaces";
-import currencyIC from "/src/assets/currency.svg";
+import { CURRENCY } from "@/constant";
 import { motion } from "framer-motion";
+import type { HTMLAttributes } from "react";
+import type { IProduct } from "../interfaces";
+import Image from "./shared/Image";
 interface ProductCardProps extends HTMLAttributes<HTMLDivElement> {
     item: IProduct;
     key?: number
@@ -26,7 +26,8 @@ const ProductCard = ({ item, key }: ProductCardProps) => {
                 <div className="flex gap-2 items-center">
 
                     <p className="text-sm text-green-main font-extrabold">{item?.price}</p>
-                    <Image src={currencyIC} alt={item?.name?.ar || "img"} className="size-3 object-cover" />
+                    <span className="text-black dark:text-white  text-xs font-bold self-end">{CURRENCY}</span>
+
                 </div>
             </div>
         </motion.div>

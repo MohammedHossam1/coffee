@@ -28,3 +28,4 @@ export const navLinks = [
     { label: "المــنتجـــات", path: "/products" },
     { label: "إتصل بـــنا", path: "https://wa.me/201234567890" }, // ← رقمك بعد مفتاح الدولة بدون "+" مثلاً 20 لمصر
 ];
+export const CURRENCY= "ILS"

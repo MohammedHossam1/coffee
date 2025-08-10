@@ -52,7 +52,7 @@ const CategoriesPage = () => {
         <HomeMainCarousel data={data?.data?.sliders || []} />
       </div>
       <div
-        className="h-full flex flex-col bg-[#faf1d0]"
+        className="h-full flex flex-col bg-[#faf1d0]  rounded-t-xl "
       >
         <div className="">
           <MobileCategories items={sortedCategories}
@@ -61,13 +61,13 @@ const CategoriesPage = () => {
             initialIndex={2} />
         </div>
         <div
-          onClick={() => setOpen(filteredProducts.length > 0)}
-          className="carousel-container relative z-2 h-full grid grid-cols-1 items-center bg-[#f8cf5c]"
+          className="carousel-container relative rounded-t-xl z-2 h-full grid grid-cols-1 items-center bg-[#f8cf5c]"
 
         >
           <DisplayProduct
             products={filteredProducts || []}
             details={false}
+            setOpen={setOpen}
             onSelectProduct={setSelectedProduct}
           />
         </div>
