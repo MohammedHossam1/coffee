@@ -41,7 +41,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
   return (
     <>
       <AnimatePresence mode="wait">
-        <div className="relative bottom-slider rounded-t-full">
+        <div className="relative bottom-slider ">
           <motion.div className="relative z-22 ">
             <Swiper
               modules={[Pagination]}
@@ -56,8 +56,13 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
             >
               {products.map((item, i) => (
                 <SwiperSlide
+                  onClick={() => {
+                    setOpen(true);
+                    onSelectProduct?.(item);
+
+                  }}
                   key={item.id}
-                  className="rounded-2xl overflow-hsidden relative"
+                  className="rounded-2xl cursor-pointer  relative"
                 >
                   <div className="size-34 xxs:size-38 md:size-50 bg-[#FFFFFF1A] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
 
@@ -94,11 +99,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
 
                       {!details && (
                         <motion.p
-                          onClick={() => {
-                            setOpen(true);
-                            onSelectProduct?.(item);
 
-                          }}
 
                           whileTap={{ scale: .9 }}
                           className={`xxs:!text-2xl rounded-full px-2 py-1 border  border-black w-fit m-auto font-extrabold text-black relative z-31 hover:bg-black hover:text-white   scale-95  cursor-pointer duration-200 transition-all `}
@@ -122,7 +123,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
                 </SwiperSlide>
               ))}
 
-              {!details && <div ref={paginationRef} className="flex justify-center gap-2 pt-1"></div>}
+              {/* {!details && <div ref={paginationRef} className="flex justify-center gap-2 pt-1"></div>} */}
             </Swiper>
           </motion.div>
         </div>

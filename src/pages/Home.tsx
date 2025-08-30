@@ -42,7 +42,7 @@ const Home = () => {
       </div>
       {/* Mobile */}
       <div className=" lg:hidden custom-container  ">
-        <MobileSectionHeader icon={true} title={"المينيــو بين يديـــك "} />
+        <MobileSectionHeader icon={true} title={"القائمه"} />
         <motion.div
           variants={variants}
           initial="hidden"
@@ -83,7 +83,7 @@ const Home = () => {
 
       <div className="lg:hidden custom-container  max-md:space-y-3 block  w-full pb-7">
         {/* vedios */}
-        <MobileSectionHeader title={"نـــــــاس كــانو مثلك "} />
+        <MobileSectionHeader title={"دايلي دوز"} />
         <VideosCarousel data={data?.data?.videos || []} />
         {/* social */}
         <MobileSectionHeader title={"تـــــــابعنا "} />

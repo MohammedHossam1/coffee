@@ -30,11 +30,11 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
       >
         {data.map((item, i: number) => (
           <SwiperSlide key={i}>
-            <div className="relative w-full h-38 xxs:h-42 md:h-[30vh] xl:h-[70vh] md:bg-white">
+            <div className="relative w-full h-38 xxs:h-[30vh] md:h-[30vh] xl:h-[70vh] md:bg-white">
               <Image
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-cover rounded-xl"
+                className="w-full h-full object-fill rounded-xl"
               />
             </div>
           </SwiperSlide>
