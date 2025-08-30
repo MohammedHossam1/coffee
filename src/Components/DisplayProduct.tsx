@@ -11,9 +11,10 @@ interface DisplayProductProps {
   products: IProduct[]
   details?: boolean;
   onSelectProduct?: (product: IProduct) => void
+  setOpen: (open: boolean) => void
 }
 
-const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = false, onSelectProduct }) => {
+const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = false, onSelectProduct, setOpen }) => {
   const paginationRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
   useEffect(() => {
@@ -40,31 +41,35 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
   return (
     <>
       <AnimatePresence mode="wait">
-        <div className="relative bottom-slider rounded-t-full">
-          <motion.div layout className="relative z-22">
+        <div className="relative bottom-slider ">
+          <motion.div className="relative z-22 ">
             <Swiper
               modules={[Pagination]}
               spaceBetween={20}
               slidesPerView={2.2}
               centeredSlides={true}
               pagination={{ clickable: true }}
-          
+
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
             >
               {products.map((item, i) => (
                 <SwiperSlide
+                  onClick={() => {
+                    setOpen(true);
+                    onSelectProduct?.(item);
+
+                  }}
                   key={item.id}
-                  className="rounded-2xl overflow-hsidden relative"
-                  onClick={() => onSelectProduct && onSelectProduct(item)}
+                  className="rounded-2xl cursor-pointer  relative"
                 >
                   <div className="size-34 xxs:size-38 md:size-50 bg-[#FFFFFF1A] absolute rounded-full top-1/2 left-1/2 !-z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
 
                   <Image
                     src={item.image}
                     alt={`Product ${i}`}
-                    className="w-full h-34 xxs:h-56 md:h-60 !object-contain rounded-2xl"
+                    className="w-full h-34 xxs:h-44 md:h-60 !object-contain rounded-2xl"
                   />
 
                   <AnimatePresence mode="wait">
@@ -75,20 +80,18 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3 }}
-                      className="text-center space-y-1  sm:-translate-y-0  relative z-10">
+                      className="text-center space-y-1  relative z-2">
                       <motion.h2
-                        layout
                         className={`text-sm xxs:text-base md:text-xl font-bold xxs:mt-2 ${details ? "text-black" : "text-white"} 
-                           scale-95 pointer-events-none
+                           scale-95 
                           `}
                       >
-                        Flurry oreo
+                        {item.name.en}
                       </motion.h2>
 
                       <motion.h2
-                        layout
                         className={`text-lg xxs:text-xl md:text-2xl font-extrabold ${details ? "text-black" : "text-white"}
-                        scale-95 pointer-events-none
+                        scale-95 
                           `}
                       >
                         {item.name.ar}
@@ -96,10 +99,12 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
 
                       {!details && (
                         <motion.p
-                          layout
-                          className={`xxs:!text-2xl  font-extrabold text-black  scale-95 pointer-events-none `}
+
+
+                          whileTap={{ scale: .9 }}
+                          className={`xxs:!text-2xl rounded-full px-2 py-1 border  border-black w-fit m-auto font-extrabold text-black relative z-31 hover:bg-black hover:text-white   scale-95  cursor-pointer duration-200 transition-all `}
                         >
-                          <span className="text-[9px] mr-1">ILS</span>
+                          <span className="text-[9px] mr-1  ">ILS</span>
                           {item.price}
                         </motion.p>
                       )}
@@ -107,21 +112,18 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
                       {details && (
                         <motion.p
                           layout
-                          className={`text-sm font-medium leading-9 ${details ? "text-black" : "text-white"}  "opacity-0 scale-95 pointer-events-none" : ""
+                          className={`text-sm font-medium leading-9 ${details ? "text-black" : "text-white"}  "opacity-0 scale-95 " : ""
                               }`}
                         >
                           {item.description.ar}
                         </motion.p>
                       )}
                     </motion.div>
-
                   </AnimatePresence>
-
                 </SwiperSlide>
-
               ))}
 
-              {!details && <div ref={paginationRef} className="flex justify-center gap-2 pt-3"></div>}
+              {/* {!details && <div ref={paginationRef} className="flex justify-center gap-2 pt-1"></div>} */}
             </Swiper>
           </motion.div>
         </div>

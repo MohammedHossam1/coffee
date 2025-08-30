@@ -1,9 +1,9 @@
+import { CURRENCY } from "@/constant";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import type { ApiData, IProduct, Size } from "../interfaces";
-import Image from "./shared/Image";
-import currencyIC from "/src/assets/currency.svg";
 import ProductSheet from "./ProductSheet";
+import Image from "./shared/Image";
 
 interface Props {
   data: ApiData;
@@ -14,7 +14,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
   const [selectedSize, setSelectedSize] = useState<Size | null>(selectedProduct?.sizes[0] || null);
   const { products } = data;
   useEffect(() => {
-      setSelectedSize(selectedProduct?.sizes[0] || null)
+    setSelectedSize(selectedProduct?.sizes[0] || null)
   }, [selectedProduct])
   const categories = data.categories.filter(cat =>
     products.some(product => product.category?.id === cat.id)
@@ -24,7 +24,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
   const filteredProducts = products.filter(
     (product) => product.category?.id === activeCategoryId
   );
-  
+
   return (
     <div className=" pb-6">
       <h1 className='text-xl text-center text-black py-10 xl:text-4xl font-bold '>{"نقدّم لك مجموعة مشروبات شهية."}</h1>
@@ -73,7 +73,7 @@ const HomeDesktopCategories = ({ data }: Props) => {
                 <h3 className="text-sm xl:text-xl font-semibold text-black">{product.name.ar} ............ </h3>
                 <div className="flex gap-2 items-center">
                   <p className="text-sm xl:text-lg text-green-main font-extrabold">{product.price}</p>
-                  <Image src={currencyIC} alt={product.name.ar || "img"} className="size-3 object-cover" />
+                  <span className="text-black  text-xs font-bold ">{CURRENCY}</span>
                 </div>
               </div>
             </div>

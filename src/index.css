@@ -85,12 +85,12 @@
 
 body {
   font-family: 'Lama Sans', sans-serif !important;
-  /* background: white; */
 }
 
 /* genral config */
 @theme {
   --color-main: #CFBDA8;
+  --color-main-light: #F9F1E7;
   --color-green-main: #B3D300;
   --color-body: #F6F6F6;
   --breakpoint-xxs: 24rem;
@@ -157,6 +157,7 @@ body {
 
 body {
   @apply bg-body;
+  background-color: #F6F6F6;
 }
 
 .bottom-slider .swiper-pagination-bullet-active {

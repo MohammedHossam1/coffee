@@ -48,7 +48,7 @@ const Products = () => {
                 {/*  All Products */}
                 <button
                     onClick={() => setActiveCategoryId("all")}
-                    className={`pb-2 px-2 lg:px-4 text-base lg:text-xl text-nowrap cursor-pointer transition duration-200 border-b-2 ${activeCategoryId === "all"
+                    className={`pb-2 px-2 lg:px-4 text-base lg:text-xl !text-nowrap cursor-pointer transition duration-200 border-b-2 ${activeCategoryId === "all"
                             ? "border-black text-black dark:text-white font-bold"
                             : "border-transparent text-gray-500 hover:text-main"
                         }`}
@@ -60,7 +60,7 @@ const Products = () => {
                     <button
                         key={cat.id}
                         onClick={() => setActiveCategoryId(cat.id)}
-                        className={`pb-2 px-2 lg:px-4 text-base lg:text-xl text-nowrap    cursor-pointer transition duration-200 border-b-2 ${cat.id === activeCategoryId
+                        className={`pb-2 px-2 lg:px-4 text-base lg:text-xl !text-nowrap    cursor-pointer transition duration-200 border-b-2 ${cat.id === activeCategoryId
                                 ? "border-black text-black dark:text-white font-bold"
                                 : "border-transparent text-gray-500 hover:text-main"
                             }`}
