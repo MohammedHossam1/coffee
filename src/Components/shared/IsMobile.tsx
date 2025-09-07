@@ -7,7 +7,7 @@ interface Props {
 
 const MobileOnlyWrapper: React.FC<Props> = ({ children }) => {
     const navigate = useNavigate();
-    const isMobile = window.innerWidth <= 1024;
+    const isMobile = window.innerWidth < 1024;
 
     useEffect(() => {
 
