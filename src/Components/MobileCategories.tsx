@@ -21,7 +21,7 @@ const MobileCategories: React.FC<MobileCategoriesProps> = ({
 }) => {
     return (
         <Swiper
-            spaceBetween={10}
+            spaceBetween={20}
             slidesPerView={'auto'}
             modules={[Navigation]}
             className="w-full "

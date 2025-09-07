@@ -35,8 +35,6 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
     return () => clearTimeout(timeout);
   }, [products]);
 
-
-
   if (products.length === 0) return <h2 className="text-2xl font-bold text-center py-10">لا يوجد منتجات</h2>
   return (
     <>
