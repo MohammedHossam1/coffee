@@ -7,7 +7,7 @@ const fetchData = async (url: string, params?: any) => {
 
 export default function useGetData<T>({ key, url, params }: { key: string, url: string, params?: any }): UseQueryResult<T> {
     return useQuery({
-        queryKey: [key, params],
+        queryKey: [key, url, params?.category_id], 
         queryFn: () => fetchData(url, params),
         staleTime: 5000
     });
