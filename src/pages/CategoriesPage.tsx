@@ -16,10 +16,11 @@ import type { ApiResponse, Category, IProduct } from "../interfaces";
 const CategoriesPage = () => {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
-  const { data, isLoading } = useGetData<ApiResponse>({ key: "home", url: "/home" });
-
-  const [sortedCategories, setSortedCategories] = useState<Category[]>([]);
   const [activeTab, setActiveTab] = useState<number>(() => Number(id) || 1);
+  const { data, isLoading } = useGetData<ApiResponse>({ key: "category", url: "/home", params: { category_id: activeTab } });
+  console.log(data, "data")
+  const [sortedCategories, setSortedCategories] = useState<Category[]>([]);
+  const [sliders, setSliders] = useState<any[]>([]); // 🟢 state للـ sliders
 
   const filteredProducts = data?.data?.products.filter(
     (product) => product.category?.id === activeTab
@@ -29,7 +30,10 @@ const CategoriesPage = () => {
 
   useEffect(() => {
     if (!data?.data?.categories) return;
-
+    // 🟢 نخزن الـ sliders أول مرة فقط
+    if (sliders.length === 0 && data.data.sliders?.length) {
+      setSliders(data.data.sliders);
+    }
     const categories = [...data.data.categories];
     const paramId = Number(id);
 
@@ -44,12 +48,11 @@ const CategoriesPage = () => {
     setSortedCategories(categories);
   }, [data, id]);
 
-  if (isLoading) return <Loader />;
-
+if(!sliders.length) return <Loader  />
   return (
     <div className="flex flex-col gap-5 xxs:gap-16 max-xs:!overflow-hidden  h-[calc(100dvh-64px)]" >
       <div className="custom-container w-full pt-2">
-        <HomeMainCarousel data={data?.data?.sliders || []} />
+        <HomeMainCarousel data={sliders || []} />
       </div>
       <div
         className="h-full flex flex-col bg-[#faf1d0]  rounded-t-xl "
@@ -64,12 +67,14 @@ const CategoriesPage = () => {
           className="carousel-container relative rounded-t-xl z-2 h-full grid grid-cols-1 items-center bg-[#f8cf5c]"
 
         >
-          <DisplayProduct
-            products={filteredProducts || []}
-            details={false}
-            setOpen={setOpen}
-            onSelectProduct={setSelectedProduct}
-          />
+          {isLoading ? <Loader isSmall /> :
+
+            <DisplayProduct
+              products={filteredProducts || []}
+              details={false}
+              setOpen={setOpen}
+              onSelectProduct={setSelectedProduct}
+            />}
         </div>
 
         {filteredProducts.length > 0 && selectedProduct && (
