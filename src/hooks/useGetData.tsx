@@ -9,6 +9,6 @@ export default function useGetData<T>({ key, url, params }: { key: string, url: 
     return useQuery({
         queryKey: [key, url, params?.category_id], 
         queryFn: () => fetchData(url, params),
-        staleTime: 5000
+        staleTime: 50000
     });
 }
