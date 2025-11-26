@@ -14,7 +14,7 @@ import Loader from "../Components/shared/Loader";
 import useGetData from "../hooks/useGetData";
 import type { ApiResponse } from "../interfaces";
 
-import VideosCarousel from "../Components/VideosCarousel";
+// import VideosCarousel from "../Components/VideosCarousel";
 const variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { transition: { straggerChildren: 0.1 }, opacity: 1, y: 0 },
@@ -47,13 +47,15 @@ const Home = () => {
           variants={variants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 w-full gap-4"
+          className="grid grid-cols-2 md:grid-cols-3  w-full gap-4"
         >
-          {data?.data?.categories?.slice(0, 5).map((item, index) => (
+          {/* {index == 1 && "row-span-2"                } */}
+          {data?.data?.categories?.map((item, index) => (
             <Link
               to={`/categories/${item.id}`}
-              className={`rounded-[40px] relative p-5 min-h-34 flex flex-col justify-end overflow-hidden ${index == 1 && "row-span-2"
-                }`}
+              className={`rounded-[40px] relative p-5 min-h-34 aspect-square flex flex-col justify-end overflow-hidden $
+                
+                `}
               key={index}
               style={{
                 backgroundImage: `url(${item.image})`,
@@ -62,7 +64,7 @@ const Home = () => {
               }}
             >
               {/* التدرج الأسود */}
-              <div className="absolute bottom-0 left-0 w-full h-[100%] bg-gradient-to-t from-black/80 via-black/50 to-transparent z-0" />
+              <div className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black/80 via-black/50 to-transparent z-0" />
 
               {/* السهم */}
               <div className="absolute top-5 end-5 z-0">
@@ -83,8 +85,8 @@ const Home = () => {
 
       <div className="lg:hidden custom-container  max-md:space-y-3 block  w-full pb-7">
         {/* vedios */}
-        <MobileSectionHeader title={"دايلي دوز"} />
-        <VideosCarousel data={data?.data?.videos || []} />
+        {/* <MobileSectionHeader title={"دايلي دوز"} /> */}
+        {/* <VideosCarousel data={data?.data?.videos || []} /> */}
         {/* social */}
         <MobileSectionHeader title={"تـــــــابعنا "} />
         <Social />
@@ -96,7 +98,7 @@ const Home = () => {
           <div className="space-y-10 pt-10 xl:space-y-10 xl:pt-10">
             <div className="px-10">
               <div id="categories" className="bg-white rounded-4xl px-5 ">
-                <HomeDesctopCategories  data={data.data} />
+                <HomeDesctopCategories data={data.data} />
               </div>
             </div>
             <div className="custom-container ">
@@ -106,7 +108,7 @@ const Home = () => {
               <Testimonials data={data?.data?.sucess_stories || []} />
             </div>
           </div>
-     
+
         </div>}
     </div >
   );
