@@ -50,8 +50,8 @@ const CategoriesPage = () => {
 
 if(!sliders.length) return <Loader  />
   return (
-    <div className="flex flex-col gap-5 xxs:gap-16 max-xs:!overflow-hidden  h-[calc(100dvh-64px)]" >
-      <div className="custom-container w-full pt-2">
+    <div className="flex flex-col gap-2 max-xs:!overflow-hidden  h-[calc(100dvh-64px)]" >
+      <div className="custom-contsainer w-full pt-2">
         <HomeMainCarousel data={sliders || []} />
       </div>
       <div

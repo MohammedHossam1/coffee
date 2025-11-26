@@ -17,7 +17,7 @@ export default function Image({
   className = "",
   fallbackSrc = fallbackImage,
   objectFit = "contain",
-  loading = "lazy",
+  loading = "eager",
   style,
   ...rest
 }: ImageProps) {

@@ -25,7 +25,7 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
         autoplay={{ delay: 2500 }}
         loop={true}
         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        className="rounded-2xl lg:rounded-[45px] overflow-hidden"
+        className="rounded-2dxl lg:rounded-[45px] overflow-hidden"
         ref={swiperRef}
       >
         {data.map((item, i: number) => (
@@ -34,7 +34,7 @@ export default function HomeMainCarousel({ data }: { data: Slider[] }) {
               <Image
                 src={item.image}
                 alt={item.title}
-                className="w-full h-full object-fill rounded-xl"
+                className="w-full h-full object-fill roudnded-xl"
               />
             </div>
           </SwiperSlide>

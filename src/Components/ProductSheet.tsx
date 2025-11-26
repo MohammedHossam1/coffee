@@ -42,7 +42,6 @@ const ProductSheet = ({ selectedProduct, setSelectedProduct, selectedSize, setSe
                         src={selectedProduct?.image || ""}
                         alt={selectedProduct?.name.ar}
                         className="w-1/3 mx-auto rounded-lg object-cover"
-                        loading="lazy"
                     />
                 </div>
                 <div className="flex gap-2 items-center justify-center">

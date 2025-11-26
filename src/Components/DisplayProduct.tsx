@@ -6,6 +6,7 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { IProduct } from "../interfaces";
 import Image from "./shared/Image";
+import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 interface DisplayProductProps {
   products: IProduct[]
@@ -17,6 +18,7 @@ interface DisplayProductProps {
 const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = false, onSelectProduct, setOpen }) => {
   const paginationRef = useRef<HTMLDivElement>(null);
   const swiperRef = useRef<any>(null);
+  const { md } = useBreakpoint();
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (swiperRef.current && paginationRef.current) {
@@ -34,7 +36,11 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
 
     return () => clearTimeout(timeout);
   }, [products]);
+  useEffect(() => {
+    swiperRef.current.activeIndex = 1
+  }, []);
 
+  console.log(swiperRef.current, "paginationRef.current")
   if (products.length === 0) return <h2 className="text-2xl font-bold text-center py-10">لا يوجد منتجات</h2>
   return (
     <>
@@ -44,7 +50,7 @@ const DisplayProduct: React.FC<DisplayProductProps> = ({ products, details = fal
             <Swiper
               modules={[Pagination]}
               spaceBetween={20}
-              slidesPerView={2.2}
+              slidesPerView={md ? 3 : 2.2}
               centeredSlides={true}
               pagination={{ clickable: true }}
 
